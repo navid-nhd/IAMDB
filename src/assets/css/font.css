@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('@/assets/font/lato/Lato-thin-100.woff2');
+    font-weight: 100;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('@/assets/font/lato/Lato-Light-300.woff2');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('@/assets/font/lato/Lato-Regular-400.woff2');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('@/assets/font/lato/Lato-Bold-700.woff2');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('@/assets/font/lato/Lato-Black-900.woff2');
+    font-weight: 900;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('@/assets/font/roboto/Roboto-Thin-100.woff2');
+    font-weight: 100;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('@/assets/font/roboto/Roboto-Italic.woff2');
+    font-weight: italic;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('@/assets/font/roboto/Roboto-Light-300.woff2');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('@/assets/font/roboto/Roboto-Regular-400.woff2');
+    font-weight: 400;
+} 
+@font-face {
+    font-family: 'Roboto';
+    src: url('@/assets/font/roboto/Roboto-Medium-500.woff2');
+    font-weight: 500;
+} 
+@font-face {
+    font-family: 'Roboto';
+    src: url('@/assets/font/roboto/Roboto-Bold-700.woff2');
+    font-weight: 700;
+} 
+@font-face {
+    font-family: 'Roboto';
+    src: url('@/assets/font/roboto/Roboto-Black-900.woff2');
+    font-weight: 900;
+} 
+@font-face {
+  font-family: 'Montserrat';
+  src: url('@/assets/font/Montserrat-Regular/Montserrat-Regular.woff');
+  font-weight: 400;
+} 
