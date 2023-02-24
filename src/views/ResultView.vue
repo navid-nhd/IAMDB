@@ -1,26 +1,28 @@
 <template>
-    <div>
-        <h1>Hi this is result page!</h1>
-    </div>
+    <MovieBgImage />
+    
 </template>
 <script >
+    import MovieBgImage from '@/components/iamdb/MovieBgImage.vue'
     export default{
+        components : {
+            MovieBgImage,
+        },
+        data() {
+            return{
 
+            }
+        },
+        methods : {
+
+        },
+        computed : {
+
+        }
     }
 </script>
 <style>
-:root{
-    --main-font: 'Roboto';
-    --bg-color: #1B1717;
-    --primary-text-color: #EEEBDD;
-    --secondary-text-color: rgb(238, 235, 221);
-    --accent-color: #CE1212;
-}
-/* -----Desktop----- */
 
-*{
-    box-sizing: border-box;
-}
 body{
     width:100%;
     padding: 0;

@@ -4,4 +4,15 @@
 
 /* @import './base.css'; */
 
+:root{
+    --main-font: 'Roboto';
+    --bg-color: #1B1717;
+    --primary-text-color: #EEEBDD;
+    --secondary-text-color: rgb(238, 235, 221);
+    --accent-color: #CE1212;
+}
+/* -----Desktop----- */
 
+*{
+    box-sizing: border-box;
+}
