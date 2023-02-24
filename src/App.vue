@@ -1,8 +1,4 @@
-
-
 <template>
-  
-
   <RouterView />
 </template>
 <script>
