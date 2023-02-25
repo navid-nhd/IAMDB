@@ -13,7 +13,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6">2</div>
+                    <div class="col-12 col-lg-6">
+                        <div class="movie-data lg:px-7">
+                            <MovieName class="lg:mt-12"></MovieName>
+                        </div>
+                    </div>
                     <div class="col-12 col-lg-3">3</div>       
                 </div>
             </div>
@@ -25,10 +29,11 @@
     import MoviePoster from '@/components/iamdb/MoviePoster.vue'
     import RatingGraph from '@/components/iamdb/RatingGraph.vue'
     import VoteNumbers from '@/components/iamdb/VoteNumbers.vue'
+    import MovieName from '@/components/iamdb/MovieName.vue'
 
     export default{
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,
         },
         data() {
             return{
