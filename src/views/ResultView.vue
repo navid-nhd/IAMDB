@@ -21,8 +21,8 @@
                             <DirectorName class="mt-1.5"></DirectorName>
                             <!------------ Movie time Informations : production year/age limitation/duration -->
                             <div class="movie-info-time my-4 lg:my-5">
-                                <ul class="list-none flex gap-4">
-                                    <li v-for="item in timeInfo" class="list-items flex">
+                                <ul class="list-none flex gap-3">
+                                    <li v-for="item in timeInfo" class="list-items flex items-center">
                                         <TimeInfoItem>{{item}}</TimeInfoItem>
                                     </li>
                                 </ul>
@@ -72,11 +72,17 @@
     /* -----Movie Info----- */
     .movie-info-holder{
         margin-top: -27vh;
+        position: relative;
+        z-index: 999;
     }
     .list-items::after {
-        content: "•";
+        content: "";
         margin-left: 12px;
         width: fit-content;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: white;
     }
     .list-items:last-child::after {
         display: none;

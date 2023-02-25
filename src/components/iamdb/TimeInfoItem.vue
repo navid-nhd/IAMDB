@@ -13,5 +13,13 @@
 @tailwind components;
 @tailwind utilities;
    
+.time-item{
+    @apply text-sm;
+}
 
+@media (min-width:992px) {
+    .time-item{
+        @apply text-lg;
+    }
+}
 </style>
