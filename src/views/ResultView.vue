@@ -7,6 +7,9 @@
                     <div class="hidden lg:block col-lg-3">
                         <div class="movie-poster-and-ratings">
                             <MoviePoster></MoviePoster>
+                            <div class="movie-graph-and-votes flex items-center justify-start mt-6">
+                                <RatingGraph></RatingGraph>
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-6">2</div>
@@ -19,10 +22,11 @@
 <script >
     import MovieBgImage from '@/components/iamdb/MovieBgImage.vue'
     import MoviePoster from '@/components/iamdb/MoviePoster.vue'
+    import RatingGraph from '@/components/iamdb/RatingGraph.vue'
 
     export default{
         components : {
-            MovieBgImage,MoviePoster,
+            MovieBgImage,MoviePoster,RatingGraph,
         },
         data() {
             return{

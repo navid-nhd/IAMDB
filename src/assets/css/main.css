@@ -9,7 +9,7 @@
     --main-font: 'Roboto';
     --bg-color: #1B1717;
     --primary-text-color: #EEEBDD;
-    --secondary-text-color: rgb(238, 235, 221);
+    --secondary-color: rgb(238, 235, 221,0.4);
     --accent-color: #CE1212;
 }
 /* -----Desktop----- */
