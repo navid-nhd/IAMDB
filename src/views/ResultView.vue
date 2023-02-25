@@ -5,6 +5,7 @@
             <div class="container">
                 <div class="row movie-info-holder">
                     <div class="hidden lg:block col-lg-3">
+                        <!------------ Movie Poster and Rating Graph -->
                         <div class="movie-poster-and-ratings">
                             <MoviePoster></MoviePoster>
                             <div class="movie-graph-and-votes flex flex-nowrap gap-x-5 items-center justify-start mt-6">
@@ -15,10 +16,16 @@
                     </div>
                     <div class="col-12 col-lg-6">
                         <div class="movie-data lg:px-7">
+                             <!------------ Movie Data ------------>
                             <MovieName class="lg:mt-12"></MovieName>
                             <DirectorName class="mt-1.5"></DirectorName>
+                            <!------------ Movie time Informations : production year/age limitation/duration -->
                             <div class="movie-info-time my-4 lg:my-5">
-                                123
+                                <ul class="list-none flex gap-4">
+                                    <li v-for="item in timeInfo" class="list-items flex">
+                                        <TimeInfoItem>{{item}}</TimeInfoItem>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -37,14 +44,15 @@
     import VoteNumbers from '@/components/iamdb/VoteNumbers.vue'
     import MovieName from '@/components/iamdb/MovieName.vue'
     import DirectorName from '@/components/iamdb/DirectorName.vue'
+    import TimeInfoItem from '@/components/iamdb/TimeInfoItem.vue'
 
     export default{
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,
         },
         data() {
             return{
-
+                timeInfo: ['2008','PG-13','2h 6m']
             }
         },
         methods : {
@@ -56,11 +64,21 @@
     }
 </script>
 <style>
+
+   
     @import '@/assets/css/font.css';  
     @import '@/assets/css/bootstrap-grid.css';
     
     /* -----Movie Info----- */
     .movie-info-holder{
         margin-top: -27vh;
+    }
+    .list-items::after {
+        content: "•";
+        margin-left: 12px;
+        width: fit-content;
+    }
+    .list-items:last-child::after {
+        display: none;
     }
 </style>
