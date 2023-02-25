@@ -5,7 +5,14 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    container: {
+      center : true,
+    },
+    extend: {
+      aspectRatio : {
+        '2/3' : '2 / 3',
+      }
+    },
   },
   plugins: [],
 }
