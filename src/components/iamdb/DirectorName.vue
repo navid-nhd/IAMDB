@@ -1,6 +1,6 @@
 <template>
-    <div class="movie-name">
-        iron man
+    <div class="director-name">
+        Directors: Jon Favreau
     </div>
 </template>
 <script>
@@ -11,13 +11,13 @@
 @tailwind components;
 @tailwind utilities;
 
-.movie-name{
-    @apply text-4xl capitalize font-bold;
+.director-name{
+    @apply text-base;
 }
 
 @media (min-width:992px) {
-    .movie-name{
-        @apply text-5xl;
+    .director-name{
+        @apply text-lg;
     }
 }
 </style>

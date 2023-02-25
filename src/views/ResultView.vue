@@ -16,9 +16,15 @@
                     <div class="col-12 col-lg-6">
                         <div class="movie-data lg:px-7">
                             <MovieName class="lg:mt-12"></MovieName>
+                            <DirectorName class="mt-1.5"></DirectorName>
+                            <div class="movie-info-time my-4 lg:my-5">
+                                123
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">3</div>       
+                    <div class="col-12 col-lg-3">
+                        3
+                    </div>       
                 </div>
             </div>
         </section>
@@ -30,10 +36,11 @@
     import RatingGraph from '@/components/iamdb/RatingGraph.vue'
     import VoteNumbers from '@/components/iamdb/VoteNumbers.vue'
     import MovieName from '@/components/iamdb/MovieName.vue'
+    import DirectorName from '@/components/iamdb/DirectorName.vue'
 
     export default{
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,
         },
         data() {
             return{
