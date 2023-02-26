@@ -27,6 +27,12 @@
                                     </li>
                                 </ul>
                             </div>
+                            <!------------ Buttons ------------>
+                            <div class="movie-btn-holder">
+                                <ThrailerPlayButton></ThrailerPlayButton>
+                                <ShareButton></ShareButton>
+
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-3">
@@ -45,10 +51,12 @@
     import MovieName from '@/components/iamdb/MovieName.vue'
     import DirectorName from '@/components/iamdb/DirectorName.vue'
     import TimeInfoItem from '@/components/iamdb/TimeInfoItem.vue'
+    import ThrailerPlayButton from '@/components/iamdb/ThrailerPlayButton.vue'
+    import ShareButton from '@/components/iamdb/ShareButton.vue'
 
     export default{
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,
         },
         data() {
             return{
