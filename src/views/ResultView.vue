@@ -37,6 +37,10 @@
                             <div class="movie-description my-10">
                                 <MovieDescription></MovieDescription>
                             </div>
+                            <h3 class="capitalize text-2xl lg:text-3xl font-bold mb-0.5">details</h3>
+                            <div class="details-table">
+                                <DetailsTable v-for="item in detailedInfo" :property="item"></DetailsTable>
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-3">
@@ -59,14 +63,37 @@
     import ShareButton from '@/components/iamdb/ShareButton.vue'
     import LikeButton from '@/components/iamdb/LikeButton.vue'
     import MovieDescription from '@/components/iamdb/MovieDescription.vue'
+    import DetailsTable from '@/components/iamdb/DetailsTable.vue'
 
     export default{
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,
         },
         data() {
             return{
-                timeInfo: ['2008','PG-13','2h 6m']
+                timeInfo: ['2008','PG-13','2h 6m'],
+                detailedInfo : [
+                    {
+                        title : 'Writers',
+                        amount : 'Mark Fergus, Hawk Ostby, Art Marcum',
+                    },
+                    {
+                        title : 'Genres',
+                        amount : 'Action, Adventure, Sci-Fi',
+                    },
+                    {
+                        title : 'Awards',
+                        amount : 'Nominated for 2 Oscars, 21 wins & 73 nominations total',
+                    },
+                    {
+                        title : 'Country of Origin',
+                        amount : 'USA, Canada',
+                    },
+                    {
+                        title : 'IMDB Rating',
+                        amount : '7.9',
+                    },
+                ]
             }
         },
         methods : {
@@ -100,5 +127,8 @@
     }
     .list-items:last-child::after {
         display: none;
+    }
+    .details-table .information-table:last-child{
+        border-bottom: none;
     }
 </style>
