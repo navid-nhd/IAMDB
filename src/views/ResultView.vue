@@ -8,7 +8,7 @@
                         <!------------ Movie Poster and Rating Graph -->
                         <div class="movie-poster-and-ratings">
                             <MoviePoster></MoviePoster>
-                            <div class="movie-graph-and-votes flex flex-nowrap gap-x-5 items-center justify-start mt-6">
+                            <div class="movie-graph-and-votes flex flex-nowrap gap-x-5 items-center justify-start mt-9">
                                 <RatingGraph></RatingGraph>
                                 <VoteNumbers></VoteNumbers>
                             </div>
@@ -37,14 +37,19 @@
                             <div class="movie-description my-10">
                                 <MovieDescription></MovieDescription>
                             </div>
-                            <h3 class="capitalize text-2xl lg:text-3xl font-bold mb-0.5">details</h3>
+                            <PartTitle>details</PartTitle>
                             <div class="details-table">
                                 <DetailsTable v-for="item in detailedInfo" :property="item"></DetailsTable>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-3">
-                        3
+                        <PartTitle class="mt-14">Cast & Crew</PartTitle>
+                        <ul>
+                            <li v-for="item in castInfo" class="mt-6">
+                                <CastItem :info="item"></CastItem>
+                            </li>
+                        </ul>
                     </div>       
                 </div>
             </div>
@@ -64,10 +69,12 @@
     import LikeButton from '@/components/iamdb/LikeButton.vue'
     import MovieDescription from '@/components/iamdb/MovieDescription.vue'
     import DetailsTable from '@/components/iamdb/DetailsTable.vue'
+    import PartTitle from '@/components/iamdb/PartTitle.vue'
+    import CastItem from '@/components/iamdb/CastItem.vue'
 
     export default{
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem
         },
         data() {
             return{
@@ -92,6 +99,33 @@
                     {
                         title : 'IMDB Rating',
                         amount : '7.9',
+                    },
+                ],
+                castInfo : [
+                    {
+                        name : 'Robert Downey Jr.',
+                        role : 'Tony Stark',
+                        url : '@/assets/images/cast1.jpg',
+                    },
+                    {
+                        name : 'Terrence Howard',
+                        role : 'Rhodey',
+                        url : 'assets/images/cast2.jpg',
+                    },
+                    {
+                        name : 'Jeff Bridges',
+                        role : 'Obadiah Stane',
+                        url : 'assets/images/cast3.jpg',
+                    },
+                    {
+                        name : 'Gwyneth Paltrow',
+                        role : 'Pepper Potts',
+                        url : 'assets/images/cast4.jpg',
+                    },
+                    {
+                        name : 'Leslie Bibb',
+                        role : 'Christine Everhart',
+                        url : 'assets/images/cast5.jpg',
                     },
                 ]
             }
