@@ -7,7 +7,7 @@
 
 :root{
     --main-font: 'Roboto';
-    --bg-color: #1B1717;
+    --bg-color: rgb(27, 23, 23);
     --primary-text-color: #EEEBDD;
     --secondary-color: rgb(238, 235, 221,0.4);
     --accent-color: #CE1212;

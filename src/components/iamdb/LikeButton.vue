@@ -1,6 +1,6 @@
 <template>
     <button class="share-btn-holder">
-        <img class="share-btn-icon" src="@/assets/images/ShareIcon.png" alt="Share Icon">
+        <img class="share-btn-icon" src="@/assets/images/likeIcon.svg" alt="Share Icon">
     </button>
 </template>
 <script>

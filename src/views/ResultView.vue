@@ -16,10 +16,10 @@
                     </div>
                     <div class="col-12 col-lg-6">
                         <div class="movie-data lg:px-7">
-                             <!------------ Movie Data ------------>
+                             <!------------ Movie primary Data ------------>
                             <MovieName class="lg:mt-12"></MovieName>
                             <DirectorName class="mt-1.5"></DirectorName>
-                            <!------------ Movie time Informations : production year/age limitation/duration -->
+                            <!------------ Movie Informations -->
                             <div class="movie-info-time my-4 lg:my-5">
                                 <ul class="list-none flex gap-3">
                                     <li v-for="item in timeInfo" class="list-items flex items-center">
@@ -28,10 +28,14 @@
                                 </ul>
                             </div>
                             <!------------ Buttons ------------>
-                            <div class="movie-btn-holder">
+                            <div class="movie-btn-holder flex gap-4 lg:gap-5">
                                 <ThrailerPlayButton></ThrailerPlayButton>
                                 <ShareButton></ShareButton>
-
+                                <LikeButton></LikeButton>
+                            </div>
+                            <!------------ Description ------------>
+                            <div class="movie-description my-10">
+                                <MovieDescription></MovieDescription>
                             </div>
                         </div>
                     </div>
@@ -53,10 +57,12 @@
     import TimeInfoItem from '@/components/iamdb/TimeInfoItem.vue'
     import ThrailerPlayButton from '@/components/iamdb/ThrailerPlayButton.vue'
     import ShareButton from '@/components/iamdb/ShareButton.vue'
+    import LikeButton from '@/components/iamdb/LikeButton.vue'
+    import MovieDescription from '@/components/iamdb/MovieDescription.vue'
 
     export default{
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,
         },
         data() {
             return{
