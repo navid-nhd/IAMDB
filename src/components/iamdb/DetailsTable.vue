@@ -2,10 +2,10 @@
     <div class="information-table border-b lg:border-b-2 border-zinc-500">
         <div class="table-row">
             <div class="first-column col-5 col-lg-4 ">
-                {{ property.title }}
+                {{ tableProperty.title }}
             </div>
             <div class="second-column col-7 col-lg-8">
-                {{ property.amount }}
+                {{ tableProperty.amount }}
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
 <script>
     export default{
         props : {
-            property : {
+            tableProperty : {
                 type : Object,
             }
         }

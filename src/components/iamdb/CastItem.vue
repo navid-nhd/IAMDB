@@ -1,7 +1,7 @@
 <template>
     <div class="cast-info-holder flex justify-start items-center gap-3">
         <div class="cast-image-holder">
-            <img class="cast-img w-20 h-20 rounded-full block" src="@/assets/images/cast1.jpg" alt="`${info.name}`">
+            <img class="cast-img w-20 h-20 rounded-full block" :src="`src/assets/images/${info.url}`" :alt="info.name">
         </div>
         <div class="cast-name-role">
             <div class="cast-name text-base">{{ info.name }}</div>

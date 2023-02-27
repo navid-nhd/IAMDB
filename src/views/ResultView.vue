@@ -39,7 +39,7 @@
                             </div>
                             <PartTitle>details</PartTitle>
                             <div class="details-table">
-                                <DetailsTable v-for="item in detailedInfo" :property="item"></DetailsTable>
+                                <DetailsTable v-for="item in detailedInfo" :tableProperty="item"></DetailsTable>
                             </div>
                         </div>
                     </div>
@@ -50,6 +50,7 @@
                                 <CastItem :info="item"></CastItem>
                             </li>
                         </ul>
+                        <ShowMoreBtn class="py-10"></ShowMoreBtn>
                     </div>       
                 </div>
             </div>
@@ -57,6 +58,7 @@
     </main>
 </template>
 <script >
+    import PartTitle from '@/components/iamdb/PartTitle.vue'
     import MovieBgImage from '@/components/iamdb/MovieBgImage.vue'
     import MoviePoster from '@/components/iamdb/MoviePoster.vue'
     import RatingGraph from '@/components/iamdb/RatingGraph.vue'
@@ -69,12 +71,12 @@
     import LikeButton from '@/components/iamdb/LikeButton.vue'
     import MovieDescription from '@/components/iamdb/MovieDescription.vue'
     import DetailsTable from '@/components/iamdb/DetailsTable.vue'
-    import PartTitle from '@/components/iamdb/PartTitle.vue'
     import CastItem from '@/components/iamdb/CastItem.vue'
+    import ShowMoreBtn from '@/components/iamdb/ShowMoreBtn.vue'
 
     export default{
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,
         },
         data() {
             return{
@@ -105,27 +107,27 @@
                     {
                         name : 'Robert Downey Jr.',
                         role : 'Tony Stark',
-                        url : '@/assets/images/cast1.jpg',
+                        url : 'cast1.jpg',
                     },
                     {
                         name : 'Terrence Howard',
                         role : 'Rhodey',
-                        url : 'assets/images/cast2.jpg',
+                        url : 'cast2.jpg',
                     },
                     {
                         name : 'Jeff Bridges',
                         role : 'Obadiah Stane',
-                        url : 'assets/images/cast3.jpg',
+                        url : 'cast3.jpg',
                     },
                     {
                         name : 'Gwyneth Paltrow',
                         role : 'Pepper Potts',
-                        url : 'assets/images/cast4.jpg',
+                        url : 'cast4.jpg',
                     },
                     {
                         name : 'Leslie Bibb',
                         role : 'Christine Everhart',
-                        url : 'assets/images/cast5.jpg',
+                        url : 'cast5.jpg',
                     },
                 ]
             }
