@@ -47,12 +47,22 @@
                         <PartTitle class="mt-14">Cast & Crew</PartTitle>
                         <ul>
                             <li v-for="item in castInfo" class="mt-6">
-                                <CastItem :info="item"></CastItem>
+                                <CastItem :personalInfo="item"></CastItem>
                             </li>
                         </ul>
                         <ShowMoreBtn class="py-10"></ShowMoreBtn>
                     </div>       
                 </div>
+            </div>
+        </section>
+        <section class="movie-gallery">
+            <div class="container">
+                <PartTitle class="mt-16 mb-6">Photos</PartTitle>
+                <ul class="flex flex-wrap -mx-3">
+                    <li v-for="item in galleryList" class="gallery-item">
+                        <MovieImageGallery :photoData="item"></MovieImageGallery>
+                    </li>
+                </ul>
             </div>
         </section>
     </main>
@@ -73,10 +83,11 @@
     import DetailsTable from '@/components/iamdb/DetailsTable.vue'
     import CastItem from '@/components/iamdb/CastItem.vue'
     import ShowMoreBtn from '@/components/iamdb/ShowMoreBtn.vue'
+    import MovieImageGallery from '@/components/iamdb/MovieImageGallery.vue'
 
     export default{
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,MovieImageGallery,
         },
         data() {
             return{
@@ -129,6 +140,38 @@
                         role : 'Christine Everhart',
                         url : 'cast5.jpg',
                     },
+                ],
+                galleryList: [
+                    {
+                        url : 'photos1.jpg'
+                    },
+                    {
+                        url : 'photos2.jpg'
+                    },
+                    {
+                        url : 'photos3.jpg'
+                    },
+                    {
+                        url : 'photos4.jpg'
+                    },
+                    {
+                        url : 'photos5.jpg'
+                    },
+                    {
+                        url : 'photos6.jpg'
+                    },
+                    {
+                        url : 'photos7.jpg'
+                    },
+                    {
+                        url : 'photos8.jpg'
+                    },
+                    {
+                        url : 'photos9.jpg'
+                    },
+                    {
+                        url : 'photos10.jpg'
+                    },
                 ]
             }
         },
@@ -149,22 +192,20 @@
     /* -----Movie Info----- */
     .movie-info-holder{
         margin-top: -27vh;
-        position: relative;
-        z-index: 999;
+        @apply relative z-50;
     }
     .list-items::after {
         content: "";
-        margin-left: 12px;
+        @apply w-1.5 h-1.5 rounded-full bg-white ml-3;
         width: fit-content;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background-color: white;
     }
     .list-items:last-child::after {
-        display: none;
+        @apply hidden;
     }
     .details-table .information-table:last-child{
-        border-bottom: none;
+        @apply border-b-0;
+    }
+    .gallery-item{
+        @apply flex-grow-0 flex-shrink-0 basis-auto w-3/6 lg:w-1/5;
     }
 </style>
