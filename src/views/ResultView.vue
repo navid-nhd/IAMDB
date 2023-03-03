@@ -69,7 +69,7 @@
             <div class="container mt-12 mb-6">
                 <PartTitle>More like this</PartTitle>
             </div>
-            <ul  class="list flex flex-nowrap shrink-0 basis-auto m-3">
+            <ul  class="list flex flex-nowrap shrink-0 basis-auto">
                 <li v-for="item in similarMovie"  class=" shrink-0 w-60 m-3 lg:w-72" >
                     <SimilarMovie :similarMovieData="item"></SimilarMovie>
                 </li> 
@@ -283,10 +283,7 @@
     }
 </script>
 <style>
-    .list{
-        overflow-x: auto;
-    }
-   
+    
     @import '@/assets/css/font.css';  
     @import '@/assets/css/bootstrap-grid.css';
     
@@ -313,4 +310,15 @@
     .gallery-item{
         @apply flex-grow-0 flex-shrink-0 basis-auto w-3/6 lg:w-1/5;
     }
+    .list{
+        overflow-x: auto;
+    }
+    .list::-webkit-scrollbar{
+        @apply w-3 h-4 rounded-xl bg-transparent;
+    }
+    .list::-webkit-scrollbar-thumb{
+        @apply rounded-xl border-4 border-solid border-transparent bg-clip-content;
+        background-color: rgba(238, 235, 221, 0.1);
+    }
+
 </style>
