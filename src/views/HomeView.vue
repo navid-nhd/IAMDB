@@ -3,13 +3,11 @@
   <main class="main">
     <div class="wrapper">
       <div class="container">
-        
           <SiteName></SiteName>
-          <div class="input-holder flex flex-wrap lg:flex-nowrap pt-48 lg:pt-32 xl:pt-72 items-center">
+          <div class="input-holder flex flex-wrap lg:flex-nowrap pt-32 lg:pt-24 xl:pt-56 2xl:pt-80 items-center">
             <InputBox class="input-box lg:pr-3"></InputBox>
-            <SearchBtn class="search-btn"></SearchBtn>
+            <SearchBtn @click="changeUrl()" class="search-btn"></SearchBtn>
           </div>
-        
       </div>
     </div>
   </main>
@@ -22,6 +20,11 @@
   export default{
     components : {
       SiteName,InputBox,SearchBtn,
+    },
+    methods: {
+      changeUrl(){
+        window.location.href = 'http://localhost:5173/result'
+      }
     }
   }
 </script>

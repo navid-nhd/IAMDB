@@ -6,7 +6,7 @@
 <script>
 
 </script>
-<style>
+<style  scoped>
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

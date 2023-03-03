@@ -11,7 +11,7 @@
 <script>
 
 </script>
-<style>
+<style  scoped>
     .btn-holder{
         @apply flex justify-center lg:justify-start items-center gap-3.5 text-red-500 hover:text-red-700;
         cursor: pointer;

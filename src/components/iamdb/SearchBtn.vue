@@ -9,7 +9,7 @@
     </div>
 </template>
 <script></script>
-<style>
+<style  scoped>
     .search-btn {
         @apply py-4;
     }

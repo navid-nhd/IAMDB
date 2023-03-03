@@ -13,9 +13,10 @@
         }
     }
 </script>
-<style>
+<style scoped>
 .faq-question{
     @apply text-xl -ml-5;
+    cursor: pointer;
 }
 .faq-answer{
     @apply text-base text-zinc-400 px-7 py-2 border-l-2 border-red-600;

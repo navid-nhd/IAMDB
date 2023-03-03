@@ -40,7 +40,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
     .picture-holder{
         @apply rounded-xl flex m-3 relative;
     }

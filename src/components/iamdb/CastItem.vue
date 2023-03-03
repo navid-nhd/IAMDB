@@ -18,7 +18,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
 
     .cast-img{
         /* @apply ; */

@@ -39,14 +39,19 @@
                             </div>
                             <PartTitle>Details</PartTitle>
                             <div class="details-table">
-                                <DetailsTable v-for="item in detailedInfo" :tableProperty="item"></DetailsTable>
+                                <DetailsTable v-for="(item,index) in detailedInfo" 
+                                                :key="index" 
+                                                :tableProperty="item">
+                                </DetailsTable>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-3">
                         <PartTitle class="mt-14">Cast & Crew</PartTitle>
                         <ul>
-                            <li v-for="item in castInfo" class="mt-6">
+                            <li v-for="(item,index) in castInfo"
+                                :key="index"    
+                                class="mt-6">
                                 <CastItem :personalInfo="item"></CastItem>
                             </li>
                         </ul>
@@ -59,18 +64,22 @@
             <div class="container">
                 <PartTitle class="mt-16 mb-6">Photos</PartTitle>
                 <ul class="flex flex-wrap -mx-3">
-                    <li v-for="item in galleryList" class="gallery-item">
+                    <li v-for="(item,index) in galleryList" 
+                                :key="index" 
+                                class="gallery-item">
                         <MovieImageGallery :photoData="item"></MovieImageGallery>                       
                     </li>
                 </ul>
             </div>
         </section>
-        <section>
+        <section class="similar-movies-offer">
             <div class="container mt-12 mb-6">
                 <PartTitle>More like this</PartTitle>
             </div>
             <ul  class="list flex flex-nowrap shrink-0 basis-auto">
-                <li v-for="item in similarMovie"  class=" shrink-0 w-60 m-3 lg:w-72" >
+                <li v-for="(item,index) in similarMovie"  
+                        :key="index" 
+                        class=" shrink-0 w-60 m-3 lg:w-72" >
                     <SimilarMovie :similarMovieData="item"></SimilarMovie>
                 </li> 
             </ul>
@@ -79,7 +88,9 @@
             <div class="container">
                 <PartTitle class="mt-16 mb-6">FAQs</PartTitle>
                 <ul class="mb-10">
-                    <li v-for="item in questionArray" class="py-1.5">
+                    <li v-for="(item,index) in questionArray" 
+                                :key="index" 
+                                class="py-1.5">
                         <QuestionBox :questionData="item"></QuestionBox>
                     </li>
                 </ul>
@@ -260,10 +271,10 @@
                         favorite: true,
                     },
                     {
-                        url : 'other2.png',
-                        name: 'Iron Man 2',
-                        rating: '6.9',
-                        favorite: false,
+                        url : 'other3.png',
+                        name: 'Iron Man 3',
+                        rating: '7.1',
+                        favorite: true,
                     },
                     {
                         url : 'other5.png',

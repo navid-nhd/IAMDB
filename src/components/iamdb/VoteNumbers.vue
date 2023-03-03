@@ -7,7 +7,7 @@
 <script>
 
 </script>
-<style>
+<style scoped>
 .graph-details{
     @apply flex flex-col justify-center items-start;
 }

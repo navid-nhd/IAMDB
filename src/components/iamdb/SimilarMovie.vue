@@ -38,11 +38,7 @@
         },  
         methods:{
             addToFavs(){
-                if(this.similarMovieData.favorite){
-                    this.similarMovieData.favorite = false;
-                }else{
-                    this.similarMovieData.favorite = true;
-                }
+                this.similarMovieData.favorite = this.similarMovieData.favorite ? false : true
             }
         }
     }
