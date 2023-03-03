@@ -66,14 +66,16 @@
         z-index: 999;
     }
     .modal{
-        @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-2/4;
+        @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-3/5;
         z-index: 999;
     }
     .modal-picture{
         @apply block aspect-[3/2] rounded-xl;
     }
     .close-btn{
-        @apply absolute top-3 right-3 p-1 w-14 h-14 border-2 rounded-full flex justify-center items-center;
+        @apply absolute top-3 right-3 p-1 border-2 rounded-full flex justify-center items-center;
+        width: 8%;
+        height: 12%;
         cursor: pointer;
     }
 </style>
