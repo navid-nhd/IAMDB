@@ -1,18 +1,41 @@
 <template>
-    <div class="gellery-holder">
-        <div class="picture-holder">
-            <img class="gallery-img" :src="`src/assets/images/${photoData.url}`" alt="Iron Man photo 1"/>
-            <div class="overlay-holder">
-                <img class="overlay-picture" src="src/assets/images/Vector.png"/>
+    <div>
+        <div class="gellery-holder"  @click="isVisible()">
+            <div class="picture-holder">
+                <img class="gallery-img" :src="`src/assets/images/${photoData.url}`" alt="Iron Man photo 1"/>
+                <div class="overlay-holder">
+                    <img class="overlay-picture" src="src/assets/images/Vector.png"/>
+                </div>
             </div>
         </div>
-      </div>  
+        <div :class="`modal-holder  ${visibility}`">
+            <div class="modal">
+                <img class="modal-picture" :src="`src/assets/images/${photoData.url}`" />
+                <div class="close-btn" @click="isHidden()">
+                    <img src="src/assets/images/close.png" alt="" />
+                </div>
+            </div>
+        </div>  
+    </div>
 </template>
 <script>
     export default{
         props: {
             photoData : {
                 type : Object,
+            }
+        },
+        data(){
+            return{
+                visibility : 'hidden opacity-0'
+            }
+        },  
+        methods: {
+            isVisible(){
+                this.visibility = 'block opacity-100'
+            },
+            isHidden(){
+                this.visibility = 'hidden opacity-0'
             }
         }
     }
@@ -36,5 +59,21 @@
     }
     .gellery-holder:hover .overlay-picture{
         @apply block;
+    }
+    .modal-holder{
+        @apply fixed inset-0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 999;
+    }
+    .modal{
+        @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-2/4;
+        z-index: 999;
+    }
+    .modal-picture{
+        @apply block aspect-[3/2] rounded-xl;
+    }
+    .close-btn{
+        @apply absolute top-3 right-3 p-1 w-14 h-14 border-2 rounded-full flex justify-center items-center;
+        cursor: pointer;
     }
 </style>

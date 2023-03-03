@@ -60,7 +60,7 @@
                 <PartTitle class="mt-16 mb-6">Photos</PartTitle>
                 <ul class="flex flex-wrap -mx-3">
                     <li v-for="item in galleryList" class="gallery-item">
-                        <MovieImageGallery :photoData="item"></MovieImageGallery>
+                        <MovieImageGallery :photoData="item"></MovieImageGallery>                       
                     </li>
                 </ul>
             </div>
@@ -104,10 +104,11 @@
 
     export default{
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,MovieImageGallery,QuestionBox,
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,MovieImageGallery,QuestionBox
         },
         data() {
             return{
+                
                 timeInfo: ['2008','PG-13','2h 6m'],
                 detailedInfo : [
                     {
@@ -231,7 +232,7 @@
             }
         },
         methods : {
-
+            
         },
         computed : {
 
