@@ -69,7 +69,11 @@
             <div class="container mt-12 mb-6">
                 <PartTitle>More like this</PartTitle>
             </div>
-            
+            <ul  class="list flex flex-nowrap shrink-0 basis-auto m-3">
+                <li v-for="item in similarMovie"  class=" shrink-0 w-60 m-3 lg:w-72" >
+                    <SimilarMovie :similarMovieData="item"></SimilarMovie>
+                </li> 
+            </ul>
         </section>
         <section class="FAQs">
             <div class="container">
@@ -100,11 +104,12 @@
     import CastItem from '@/components/iamdb/CastItem.vue'
     import ShowMoreBtn from '@/components/iamdb/ShowMoreBtn.vue'
     import MovieImageGallery from '@/components/iamdb/MovieImageGallery.vue'
+    import SimilarMovie from '@/components/iamdb/SimilarMovie.vue'
     import QuestionBox from '@/components/iamdb/QuestionBox.vue'
 
     export default{
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,MovieImageGallery,QuestionBox
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,MovieImageGallery,QuestionBox,SimilarMovie
         },
         data() {
             return{
@@ -228,6 +233,44 @@
                         question: `Who are the villain(s) in 'Iron Man'?`,
                         answer : ``,
                     },
+                ],
+                similarMovie : [
+                    {
+                        url : 'other3.png',
+                        name: 'Iron Man 3',
+                        rating: '7.1',
+                        favorite: true,
+                    },
+                    {
+                        url : 'other4.png',
+                        name: 'The Avengers',
+                        rating: '8.0',
+                        favorite: false,
+                    },
+                    {
+                        url : 'other5.png',
+                        name: 'Captain America: The Winter Soldier',
+                        rating: '7.8',
+                        favorite: false,
+                    },
+                    {
+                        url : 'other2.png',
+                        name: 'Iron Man 2',
+                        rating: '6.9',
+                        favorite: true,
+                    },
+                    {
+                        url : 'other2.png',
+                        name: 'Iron Man 2',
+                        rating: '6.9',
+                        favorite: false,
+                    },
+                    {
+                        url : 'other5.png',
+                        name: 'Captain America: The Winter Soldier',
+                        rating: '7.8',
+                        favorite: true,
+                    },
                 ]
             }
         },
@@ -240,7 +283,9 @@
     }
 </script>
 <style>
-
+    .list{
+        overflow-x: auto;
+    }
    
     @import '@/assets/css/font.css';  
     @import '@/assets/css/bootstrap-grid.css';
