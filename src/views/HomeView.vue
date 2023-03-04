@@ -1,24 +1,30 @@
 
 <template>
+  {{ input }}
   <main class="main">
     <div class="wrapper">
       <div class="container">
           <SiteName></SiteName>
-          <div class="input-holder pt-32 lg:pt-24 xl:pt-56 2xl:pt-80">
+          <div class="input-holder pt-32 lg:pt-24 xl:pt-30 2xl:pt-56">
             <InputBox class="input-box" @gettingInput="getInput"></InputBox>
           </div>
-          <div @click="fetchInput()">fetch</div>
+          <router-link to="/result" >
+            <div @click="counterStore.increment(input)">fetch</div>
+          </router-link>
       </div>
     </div>
   </main>
 </template>
 <script>
+  import { mapStores,mapActions } from 'pinia';
+  import { useCounterStore } from '@/stores/counter';
+
   import axios from 'axios'
   import SiteName from '@/components/iamdb/SiteName.vue'
   import InputBox from '@/components/iamdb/InputBox.vue'
   import SearchBtn from '@/components/iamdb/SearchBtn.vue'
 
-  export default{
+export default{
     components : {
       SiteName,InputBox,SearchBtn,
     },
@@ -28,20 +34,30 @@
       }
     },
     methods: {
+      ...mapActions(useCounterStore,['increment']),
       getInput(id){
         this.input = id ;
       },
       fetchInput(){
-        fetch('https://imdb-api.com/en/API/Title/k_73l2tbte/tt1375666', {
-                method: 'GET',
-                redirect: 'follow'
-              })
-              .then( response => response.text())
-              .then( res => JSON.parse(res))
-              .then( res => {
-                console.log(res)
-              })
-              .catch(error => console.log('error', error));
+
+        this.counterStore.test = this.input
+
+        // fetch('https://imdb-api.com/en/API/Posters/_73l2tbte/tt1375666', {
+        //         method: 'GET',
+        //         redirect: 'follow'
+        //       })
+        //       .then( response => response.text())
+        //       .then( res => JSON.parse(res))
+        //       .then( res => {
+        //         console.log(res)
+        //       })
+        //       .catch(error => {
+        //         window.location.href = 'http://localhost:5173/error'
+        //         console.log('error', error)
+        //       });
+
+
+
               //https://imdb-api.com/en/API/Title/k_73l2tbte/tt1375666'
         // fetch('https://imdb-api.com/en/API/SearchMovie/k_73l2tbte/inception2010')
         //   .then( response => response.text())
@@ -58,8 +74,11 @@
       // changeUrl(){
       //   window.location.href = 'http://localhost:5173/result'
       // }
-    }
-  }
+  },
+  computed: {
+    ...mapStores(useCounterStore)
+  },
+}
 </script>
 <style>
     @import '@/assets/css/font.css';  

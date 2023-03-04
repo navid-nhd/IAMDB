@@ -1,5 +1,6 @@
 <template>
     <main>
+        {{ counterStore.test }}
         <section class="movie-info">
             <MovieBgImage />
             <div class="container">
@@ -99,6 +100,9 @@
     </main>
 </template>
 <script >
+    import { mapStores,mapActions } from 'pinia';
+    import { useCounterStore } from '@/stores/counter';
+
     import PartTitle from '@/components/iamdb/PartTitle.vue'
     import MovieBgImage from '@/components/iamdb/MovieBgImage.vue'
     import MoviePoster from '@/components/iamdb/MoviePoster.vue'
@@ -286,10 +290,10 @@
             }
         },
         methods : {
-            
+            ...mapActions(useCounterStore,['increment'])
         },
         computed : {
-
+            ...mapStores(useCounterStore)
         }
     }
 </script>
