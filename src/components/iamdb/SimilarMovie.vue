@@ -1,10 +1,10 @@
 <template>
     <div class="similar-movies">
         <div class="similar-image-holder">
-            <img class="similar-img" :src="`src/assets/images/${similarMovieData.url}`" alt="Iron Man 3 poster">
+            <img class="similar-img" :src="dataStore.similarImage[i]" :alt="dataStore.similarTitle[i]">
         </div>
         <div class="similar-movie-description">
-            <div class="sm-name">{{ similarMovieData.name }}</div>
+            <div class="sm-name">{{dataStore.similarTitle[i]}}</div>
             <div class="sm-status flex  gap-2 items-center">
                 <div class="sm-favorite">
                     <svg v-if="similarMovieData.favorite" @click="addToFavs()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" :class="`bi ${favClass}`" viewBox="0 0 16 16">
@@ -18,17 +18,22 @@
                     <img class="star-icon" src="src/assets/images/StarIcon.png" alt="add to favorite">
                 </div>
                 <div class="sm-rating">
-                    {{ similarMovieData.rating }}
+                    {{dataStore.similarRating[i]}}
                 </div>
             </div>
         </div>    
     </div>
 </template>
 <script>
+import { mapStores,mapActions } from 'pinia';
+import { useMovieData } from '@/stores/counter';
     export default{
         props: {
             similarMovieData : {
                 type : Object,
+            },
+            i: {
+                type: Number,
             }
         },
         data(){
@@ -40,15 +45,21 @@
             addToFavs(){
                 this.similarMovieData.favorite = this.similarMovieData.favorite ? false : true
             }
+        },
+        computed : {
+            ...mapStores(useMovieData)
         }
     }
 </script>
 <style>
     .similar-image-holder{
-        
+        width: 230px;
+        height: 342px
     }
     .similar-img{
-        @apply w-full rounded-xl;
+        @apply w-full rounded-xl block;
+        width: 230px;
+        height: 342px
     }
     .similar-movie-description{
         @apply p-3 flex justify-between items-center;
@@ -75,5 +86,14 @@
         .sm-name,.sm-rating{
             @apply text-lg;
         }
+        .similar-image-holder{
+            width: 276px;
+            height: 409px
+        }
+        .similar-img{
+            width: 276px;
+            height: 409px
+        }
     }
+
 </style>

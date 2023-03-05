@@ -1,15 +1,23 @@
 <template>
     <details class="faq-holder">
-        <summary class="faq-question">{{ questionData.question }}</summary>
-        <p class="faq-answer">{{ questionData.answer }}</p>
+        <summary class="faq-question">{{dataStore.movieQuestion[i]}}</summary>
+        <p class="faq-answer">{{dataStore.movieAnswere[i]}}</p>
     </details>
 </template>
 <script>
+import { mapStores,mapActions } from 'pinia';
+import { useMovieData } from '@/stores/counter';
     export default{
         props: {
             questionData: {
                 type: Object,
+            },
+            i: {
+                type: Number,
             }
+        },
+        computed : {
+            ...mapStores(useMovieData)
         }
     }
 </script>

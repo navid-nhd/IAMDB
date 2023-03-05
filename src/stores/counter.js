@@ -25,6 +25,12 @@ export const useMovieData = defineStore('data', {
         actorsName:[],
         actorsRole:[],
         actorsImages:[],
+        movieImages:[],
+        similarImage: [],
+        similarTitle: [],
+        similarRating: [],
+        movieQuestion: [],
+        movieAnswere: [],
       }
     },
     actions : {

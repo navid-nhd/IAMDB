@@ -65,10 +65,10 @@
             <div class="container">
                 <PartTitle class="mt-16 mb-6">Photos</PartTitle>
                 <ul class="flex flex-wrap -mx-3">
-                    <li v-for="(item,index) in galleryList" 
+                    <li v-for="(item,index) in 10" 
                                 :key="index" 
                                 class="gallery-item">
-                        <MovieImageGallery :photoData="item"></MovieImageGallery>                       
+                        <MovieImageGallery :photoData="item" :i="index"></MovieImageGallery>                       
                     </li>
                 </ul>
             </div>
@@ -78,10 +78,10 @@
                 <PartTitle>More like this</PartTitle>
             </div>
             <ul  class="list flex flex-nowrap shrink-0 basis-auto">
-                <li v-for="(item,index) in similarMovie"  
+                <li v-for="(item,index) in 10"  
                         :key="index" 
                         class=" shrink-0 w-60 m-3 lg:w-72" >
-                    <SimilarMovie :similarMovieData="item"></SimilarMovie>
+                    <SimilarMovie :similarMovieData="item" :i="index"></SimilarMovie>
                 </li> 
             </ul>
         </section>
@@ -89,10 +89,10 @@
             <div class="container">
                 <PartTitle class="mt-16 mb-6">FAQs</PartTitle>
                 <ul class="mb-10">
-                    <li v-for="(item,index) in questionArray" 
+                    <li v-for="(item,index) in 15" 
                                 :key="index" 
                                 class="py-1.5">
-                        <QuestionBox :questionData="item"></QuestionBox>
+                        <QuestionBox :questionData="item" :i="index"></QuestionBox>
                     </li>
                 </ul>
             </div>
@@ -128,165 +128,23 @@
         },
         data() {
             return{
-                
-                timeInfo: [],
                 detailedInfo : [
                     {
                         title : 'Writers',
-                        amount : '',
                     },
                     {
                         title : 'Genres',
-                        amount : 'Action, Adventure, Sci-Fi',
                     },
                     {
                         title : 'Awards',
-                        amount : 'Nominated for 2 Oscars, 21 wins & 73 nominations total',
                     },
                     {
                         title : 'Country of Origin',
-                        amount : 'USA, Canada',
                     },
                     {
                         title : 'IMDB Rating',
-                        amount : '7.9',
                     },
                 ],
-                castInfo : [
-                    {
-                        name : 'Robert Downey Jr.',
-                        role : 'Tony Stark',
-                        url : 'cast1.jpg',
-                    },
-                    {
-                        name : 'Terrence Howard',
-                        role : 'Rhodey',
-                        url : 'cast2.jpg',
-                    },
-                    {
-                        name : 'Jeff Bridges',
-                        role : 'Obadiah Stane',
-                        url : 'cast3.jpg',
-                    },
-                    {
-                        name : 'Gwyneth Paltrow',
-                        role : 'Pepper Potts',
-                        url : 'cast4.jpg',
-                    },
-                    {
-                        name : 'Leslie Bibb',
-                        role : 'Christine Everhart',
-                        url : 'cast5.jpg',
-                    },
-                ],
-                galleryList: [
-                    {
-                        url : 'photos1.jpg'
-                    },
-                    {
-                        url : 'photos2.jpg'
-                    },
-                    {
-                        url : 'photos3.jpg'
-                    },
-                    {
-                        url : 'photos4.jpg'
-                    },
-                    {
-                        url : 'photos5.jpg'
-                    },
-                    {
-                        url : 'photos6.jpg'
-                    },
-                    {
-                        url : 'photos7.jpg'
-                    },
-                    {
-                        url : 'photos8.jpg'
-                    },
-                    {
-                        url : 'photos9.jpg'
-                    },
-                    {
-                        url : 'photos10.jpg'
-                    },
-                ],
-                questionArray: [
-                    {
-                        question: `Which characters were adapted from Marvel's Iron Man comic books?`,
-                        answer : `For this list only the creators of the characters first appearances are listed. As with all comic book characters, Iron Man and his supporting cast have had several reinventions and different contributions from different writers. Theses include different iterations in different mediums that all have added different concepts to the overall mythology of the characters.Theirs Anthony Edward "Tony" Stark, referred to as Tony Stark. He made his first appearance in the comic story "Iron Man Is Born!" Tales of Suspense #39 (March 1963) by writers & Larry Lieber and artists Don Heck & Jack Kirby.Colonel James Rupert "Rhodey" Rhodes, referred to as Rhodey Rhodes on screen. He made his first appearance in the comic story "At the Mercy of My Foes Friends!" from Iron Man #118 (January 1979) by writer David Michelinie, writer/artist Bob Layton and artist John Byrne.Obadiah Stane, who made his first appearance in the comic story "Knight's Errand" from Iron Man #163 (October 1982) by writer Denny O'Neil and artist Luke McDonnell.Virginia "Pepper" Potts, referred to as Pepper Potts on screen. She made her first appearance in the comic story "The Icy Fingers of Jack Frost!" from Tales of Suspense #45 (September 1963) by writers Stan Lee & Robert Bernstein and artist Don Heck.Christine Everhart, who made her first appearance in the comic story "The Best Defense - Part Three: Technology" from Iron Man Volume 3 #75 by writer John Jackson Miller and artist Jorge Lucas.J.A.R.V.I.S. (Just A Rather Very Intelligent System) is based on the comic book character of Edwin Jarvis. Edwin Jarvis made his first appeared in the comic story "Captain America" from Tales of Suspense #59 (November 1964) by writer Stan Lee and artist Jack Kirby.Harold Joseph "Happy" Hogan, referred to as Happy Hogan on screen. He made his first appearance in the comic story "The Icy Fingers of Jack Frost!" from Tales of Suspense #45 (September 1963) by writers Stan Lee & Robert Bernstein and artist Don Heck.Howard Anthony Walter Stark, referred to as Howard Stark on screen. He made his first appearance in the comic story "The Controller Lives!" from Iron Man #28 (August 1970) by writer Archie Goodwin and artist Don Heck.and Nicholas Joseph "Nick" Fury, referred to as Nick Furry on screen. He made his first appearance in the comic story Sergeant Fury and his Howling Commandos #1 (May 1963) by writer Stan Lee and artist Jack Kirby.All other characters were created just for the film by the movie's writers.`,
-                    },
-                    {
-                        question: `Why was the fighter pilot's chute jammed during the "training exercise" scene ?`,
-                        answer : ``,
-                    },
-                    {
-                        question: `Which characters were adapted from Marvel's Iron Man comic books?`,
-                        answer : `For this list only the creators of the characters first appearances are listed. As with all comic book characters, Iron Man and his supporting cast have had several reinventions and different contributions from different writers. Theses include different iterations in different mediums that all have added different concepts to the overall mythology of the characters.Theirs Anthony Edward "Tony" Stark, referred to as Tony Stark. He made his first appearance in the comic story "Iron Man Is Born!" Tales of Suspense #39 (March 1963) by writers & Larry Lieber and artists Don Heck & Jack Kirby.Colonel James Rupert "Rhodey" Rhodes, referred to as Rhodey Rhodes on screen. He made his first appearance in the comic story "At the Mercy of My Foes Friends!" from Iron Man #118 (January 1979) by writer David Michelinie, writer/artist Bob Layton and artist John Byrne.Obadiah Stane, who made his first appearance in the comic story "Knight's Errand" from Iron Man #163 (October 1982) by writer Denny O'Neil and artist Luke McDonnell.Virginia "Pepper" Potts, referred to as Pepper Potts on screen. She made her first appearance in the comic story "The Icy Fingers of Jack Frost!" from Tales of Suspense #45 (September 1963) by writers Stan Lee & Robert Bernstein and artist Don Heck.Christine Everhart, who made her first appearance in the comic story "The Best Defense - Part Three: Technology" from Iron Man Volume 3 #75 by writer John Jackson Miller and artist Jorge Lucas.J.A.R.V.I.S. (Just A Rather Very Intelligent System) is based on the comic book character of Edwin Jarvis. Edwin Jarvis made his first appeared in the comic story "Captain America" from Tales of Suspense #59 (November 1964) by writer Stan Lee and artist Jack Kirby.Harold Joseph "Happy" Hogan, referred to as Happy Hogan on screen. He made his first appearance in the comic story "The Icy Fingers of Jack Frost!" from Tales of Suspense #45 (September 1963) by writers Stan Lee & Robert Bernstein and artist Don Heck.Howard Anthony Walter Stark, referred to as Howard Stark on screen. He made his first appearance in the comic story "The Controller Lives!" from Iron Man #28 (August 1970) by writer Archie Goodwin and artist Don Heck.and Nicholas Joseph "Nick" Fury, referred to as Nick Furry on screen. He made his first appearance in the comic story Sergeant Fury and his Howling Commandos #1 (May 1963) by writer Stan Lee and artist Jack Kirby.All other characters were created just for the film by the movie's writers. `,
-                    },
-                    {
-                        question: `What is 'Iron Man' about?`,
-                        answer : ``,
-                    },
-                    {
-                        question: `Is "Iron Man” based on a book?`,
-                        answer : ``,
-                    },
-                    {
-                        question: `Who or what is the Invincible Iron Man?`,
-                        answer : ``,
-                    },
-                    {
-                        question: `Can Iron Man be considered a cyborg?`,
-                        answer : ``,
-                    },
-                    {
-                        question: `What kind of jet is Tony Stark's private jet?`,
-                        answer : ``,
-                    },
-                    {
-                        question: `Who are the villain(s) in 'Iron Man'?`,
-                        answer : ``,
-                    },
-                ],
-                similarMovie : [
-                    {
-                        url : 'other3.png',
-                        name: 'Iron Man 3',
-                        rating: '7.1',
-                        favorite: true,
-                    },
-                    {
-                        url : 'other4.png',
-                        name: 'The Avengers',
-                        rating: '8.0',
-                        favorite: false,
-                    },
-                    {
-                        url : 'other5.png',
-                        name: 'Captain America: The Winter Soldier',
-                        rating: '7.8',
-                        favorite: false,
-                    },
-                    {
-                        url : 'other2.png',
-                        name: 'Iron Man 2',
-                        rating: '6.9',
-                        favorite: true,
-                    },
-                    {
-                        url : 'other3.png',
-                        name: 'Iron Man 3',
-                        rating: '7.1',
-                        favorite: true,
-                    },
-                    {
-                        url : 'other5.png',
-                        name: 'Captain America: The Winter Soldier',
-                        rating: '7.8',
-                        favorite: true,
-                    },
-                ]
             }
         },
         methods : {

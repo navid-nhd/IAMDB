@@ -2,7 +2,7 @@
     <div>
         <div class="gellery-holder"  @click="isVisible()">
             <div class="picture-holder">
-                <img class="gallery-img" :src="`src/assets/images/${photoData.url}`" alt="Iron Man photo 1"/>
+                <img class="gallery-img" :src="dataStore.movieImages[i]" alt=""/>
                 <div class="overlay-holder">
                     <img class="overlay-picture" src="src/assets/images/Vector.png"/>
                 </div>
@@ -10,7 +10,7 @@
         </div>
         <div :class="`modal-holder  ${visibility}`">
             <div class="modal">
-                <img class="modal-picture" :src="`src/assets/images/${photoData.url}`" />
+                <img class="modal-picture" :src="dataStore.movieImages[i]" />
                 <div class="close-btn" @click="isHidden()">
                     <img src="src/assets/images/close.png" alt="" />
                 </div>
@@ -19,10 +19,15 @@
     </div>
 </template>
 <script>
+import { mapStores,mapActions } from 'pinia';
+import { useMovieData } from '@/stores/counter';
     export default{
         props: {
             photoData : {
                 type : Object,
+            },
+            i: {
+                type: Number,
             }
         },
         data(){
@@ -37,6 +42,9 @@
             isHidden(){
                 this.visibility = 'hidden opacity-0'
             }
+        },
+        computed : {
+            ...mapStores(useMovieData)
         }
     }
 </script>
@@ -66,7 +74,7 @@
         z-index: 999;
     }
     .modal{
-        @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-3/5;
+        @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-1/2;
         z-index: 999;
     }
     .modal-picture{
