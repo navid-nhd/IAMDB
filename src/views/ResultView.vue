@@ -50,9 +50,9 @@
                     <div class="col-12 col-lg-3">
                         <PartTitle class="mt-14">Cast & Crew</PartTitle>
                         <ul>
-                            <li v-for="(item,index) in 8"
+                            <li v-for="(item,index) in dataStore.castShowNumber"
                                 :key="index"    
-                                class="mt-6">
+                                class="mt-6 transition-all">
                                 <CastItem :personalInfo="item" :i="index"></CastItem>
                             </li>
                         </ul>
@@ -80,7 +80,7 @@
             <ul  class="list flex flex-nowrap shrink-0 basis-auto">
                 <li v-for="(item,index) in 10"  
                         :key="index" 
-                        class=" shrink-0 w-60 m-3 lg:w-72" >
+                        class=" shrink-0 w-60 m-3 lg:w-72 " >
                     <SimilarMovie :similarMovieData="item" :i="index"></SimilarMovie>
                 </li> 
             </ul>

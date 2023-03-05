@@ -148,7 +148,7 @@ export default{
                             this.dataStore.movieAnswere.push(res.items[i].answer)
                           }
                         })
-              }, "4000");
+              }, "7000");
         
         // axios.get('https://imdb-api.com/en/API/Search/k_72zng87l/inception 2010')
         //     .then(res => {

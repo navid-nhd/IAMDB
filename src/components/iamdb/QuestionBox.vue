@@ -23,13 +23,13 @@ import { useMovieData } from '@/stores/counter';
 </script>
 <style scoped>
 .faq-question{
-    @apply text-xl -ml-5;
+    @apply text-xl;
     cursor: pointer;
 }
 .faq-answer{
     @apply text-base text-zinc-400 px-7 py-2 border-l-2 border-red-600;
 }
 summary::marker {
-    color: rgba(255, 255, 255, 0);
+    /* color: rgba(255, 255, 255, 0); */
 }
 </style>

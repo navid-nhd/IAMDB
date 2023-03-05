@@ -1,5 +1,5 @@
 <template>
-    <div class="cast-info-holder flex justify-start items-center gap-3">
+    <div class="cast-info-holder flex justify-start items-center gap-3 transition-all">
         <div class="cast-image-holder">
             <img class="cast-img w-20 h-20 rounded-full block" :src="dataStore.actorsImages[i]" :alt="dataStore.actorsName[i]">
         </div>

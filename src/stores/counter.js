@@ -31,6 +31,7 @@ export const useMovieData = defineStore('data', {
         similarRating: [],
         movieQuestion: [],
         movieAnswere: [],
+        castShowNumber: 5,
       }
     },
     actions : {
