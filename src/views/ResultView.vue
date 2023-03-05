@@ -50,10 +50,10 @@
                     <div class="col-12 col-lg-3">
                         <PartTitle class="mt-14">Cast & Crew</PartTitle>
                         <ul>
-                            <li v-for="(item,index) in castInfo"
+                            <li v-for="(item,index) in 8"
                                 :key="index"    
                                 class="mt-6">
-                                <CastItem :personalInfo="item"></CastItem>
+                                <CastItem :personalInfo="item" :i="index"></CastItem>
                             </li>
                         </ul>
                         <ShowMoreBtn class="py-10"></ShowMoreBtn>
