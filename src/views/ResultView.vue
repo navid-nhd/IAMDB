@@ -77,13 +77,48 @@
             <div class="container mt-12 mb-6">
                 <PartTitle>More like this</PartTitle>
             </div>
-            <ul  class="list flex flex-nowrap shrink-0 basis-auto">
+            <!-- <ul  class="list flex flex-nowrap shrink-0 basis-auto">
                 <li v-for="(item,index) in 10"  
                         :key="index" 
                         class=" shrink-0 w-60 m-3 lg:w-72 " >
                     <SimilarMovie :similarMovieData="item" :i="index"></SimilarMovie>
                 </li> 
-            </ul>
+            </ul> -->
+            <Carousel :items-to-show="6" :wrap-around="true">
+                <Slide v-for="slide in 10" :key="slide">
+                    <div class="carousel__item flex-wrap grow-0 shrink-0">
+                        <div class="w-full">
+                            <div class="similar-image-holder basis-auto w-full">
+                                <img class="similar-img w-full" :src="dataStore.similarImage[slide]" :alt="dataStore.similarTitle[slide]">
+                            </div>
+                            <div class="flex justify-between pr-2 py-2 w-full">
+                                <div class="sm-name">{{dataStore.similarTitle[slide]}}</div>
+                                <div class="sm-rating flex gap-2 pr-3 items-center">
+                                    <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" :class="`bi ${favClass}`" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                    </svg>
+                                    <img class="star-icon" src="src/assets/images/StarIcon.png" alt="add to favorite">
+                                    {{dataStore.similarRating[slide]}}
+                                </div>
+                            </div>
+                            <!-- <div class="similar-movie-description">
+                                <div class="sm-name">{{dataStore.similarTitle[slide]}}</div>
+                                <div class="sm-status flex gap-2 items-center">
+                                    <div class="sm-star">
+                                        <img class="star-icon" src="src/assets/images/StarIcon.png" alt="add to favorite">
+                                    </div>
+                                    <div class="sm-rating">
+                                        {{dataStore.similarRating[slide]}}
+                                    </div>
+                                </div>
+                            </div>   -->
+                        </div>
+                    </div>
+                </Slide>
+                <template #addons>
+                <Navigation />
+                </template>
+            </Carousel>
         </section>
         <section class="FAQs">
             <div class="container">
@@ -100,6 +135,9 @@
     </main>
 </template>
 <script >
+    import 'vue3-carousel/dist/carousel.css'
+    import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+
     import { mapStores,mapActions } from 'pinia';
     import { useMovieData } from '@/stores/counter';
 
@@ -123,11 +161,30 @@
     import QuestionBox from '@/components/iamdb/QuestionBox.vue'
 
     export default{
+        name: 'App',
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,MovieImageGallery,QuestionBox,SimilarMovie
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,MovieImageGallery,QuestionBox,SimilarMovie,Carousel,Slide,Pagination,Navigation,
         },
-        data() {
+        data() {            
             return{
+                settings: {
+                    itemsToShow: 6,
+                    snapAlign: 'center',
+                    },
+                    // breakpoints are mobile first
+                    // any settings not specified will fallback to the carousel settings
+                    breakpoints: {
+                    // 700px and up
+                    700: {
+                        itemsToShow: 5,
+                        snapAlign: 'center',
+                    },
+                    // 1024 and up
+                    1024: {
+                        itemsToShow: 6,
+                        snapAlign: 'center',
+                    },
+                },
                 detailedInfo : [
                     {
                         title : 'Writers',
@@ -157,13 +214,57 @@
     }
 </script>
 <style>
+    .carousel__item {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(141, 141, 141, 0);
+        color: var(--vc-clr-white);
+        font-size: 20px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .carousel__slide {
+        padding: 10px;
+        /* min-width: 270px; */
+    }
+
+    .carousel__prev,
+    .carousel__next {
+        color: white;
+        box-sizing: content-box;
+        border: 3px solid white;
+        border-radius: 50%;
+    }
     
+    .sm-name{
+        max-width: 70%;
+        max-height: 30px; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        /* position: relative */
+    }
+    .sm-name,.sm-rating{
+        @apply text-base font-bold;
+    }
+    .favorite-icon,.star-icon{
+        @apply w-4 h-4;
+    }
+    @media (min-width: 992px) {
+        .sm-name,.sm-rating{
+            @apply text-lg;
+        }
+    }
+
     @import '@/assets/css/font.css';  
     @import '@/assets/css/bootstrap-grid.css';
     
     /* -----Movie Info----- */
     .movie-info-holder{
-        margin-top: -27vh;
+        margin-top: -40vh;
         @apply relative z-50;
     }
     /* -----Bullets in time list----- */
@@ -193,6 +294,12 @@
     .list::-webkit-scrollbar-thumb{
         @apply rounded-xl border-4 border-solid border-transparent bg-clip-content;
         background-color: rgba(238, 235, 221, 0.1);
+    }
+    @media (min-width: 992px) {
+        .carousel__slide {
+            padding: 10px;
+            
+        }
     }
 
 </style>

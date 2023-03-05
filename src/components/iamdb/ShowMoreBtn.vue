@@ -17,7 +17,7 @@ import { useMovieData } from '@/stores/counter';
     export default{
         data(){
             return{
-                showMoreCast: false ,
+                showMoreCast: true ,
             }
         },
         methods: {

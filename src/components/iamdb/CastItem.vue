@@ -1,6 +1,6 @@
 <template>
     <div class="cast-info-holder flex justify-start items-center gap-3 transition-all">
-        <div class="cast-image-holder">
+        <div class="cast-image-holder w-20 h-20 rounded-full">
             <img class="cast-img w-20 h-20 rounded-full block" :src="dataStore.actorsImages[i]" :alt="dataStore.actorsName[i]">
         </div>
         <div class="cast-name-role">

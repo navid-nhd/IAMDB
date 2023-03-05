@@ -63,10 +63,6 @@ import { useMovieData } from '@/stores/counter';
     }
     .similar-movie-description{
         @apply p-3 flex justify-between items-center;
-        
-    }
-    .sm-status{
-        
     }
     .sm-name{
         max-width: 70%;
