@@ -1,21 +1,10 @@
 <template>
-    <div class=" flex flex-wrap lg:flex-nowrap  items-center">
-        <div class="input flex-shrink-0 flex-grow-0 basis-auto w-full lg:w-4/5   lg:pr-3" >
-            <input class="small" type="text" placeholder="Type the name of your favorite movie ..." v-model="input">
-            <input class="large" type="text" placeholder="Your favorite movie ..." v-model="input">
-        </div>
-        <div class="search-btn flex-shrink-0 flex-grow-0 basis-auto w-full lg:w-1/5">
-            <button class="text" @click="gettingInput">
-                <span>Search</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-            </button>
-        </div>
-    </div>
+    
     
 </template>
 <script>
+  import { mapStores,mapActions } from 'pinia';
+  import { useMovieData } from '@/stores/counter';
     export default{
         data(){
             return{
@@ -26,10 +15,30 @@
             gettingInput(){
                 this.$emit('gettingInput',this.input),
                 this.input = ''
-            }
+
+
+                fetch('https://imdb-api.com/en/API/Posters/k_73l2tbte/tt1375666', {
+                    method: 'GET',
+                    redirect: 'follow'
+                })
+                .then( response => response.text())
+                .then( res => JSON.parse(res))
+                .then( res => {
+                    console.log(res)
+                    this.dataStore.posterImage = res.posters[0].link
+                    this.dataStore.bgImage = res.backdrops[0].link
+                })
+                .catch(error => {
+                    window.location.href = 'http://localhost:5173/error'
+                    console.log('error', error)
+                });
+                }
         },
         computed:{
-            
+            ...mapStores(useMovieData),
+            inputUpdate(){
+                return this.dataStore.searchInput = input
+            }
         }
     }
 </script>

@@ -1,10 +1,16 @@
 <template>
     <div class="movie-info-summary">
-        <p>After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.</p>
+        <p>{{dataStore.plot}}</p>
     </div>
 </template>
 <script>
-    
+import { mapStores,mapActions } from 'pinia';
+import { useMovieData } from '@/stores/counter';
+export default{
+computed : {
+        ...mapStores(useMovieData)
+    }
+}
 </script>
 <style scoped>
 @tailwind base;

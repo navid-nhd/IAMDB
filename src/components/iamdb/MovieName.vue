@@ -1,10 +1,16 @@
 <template>
     <div class="movie-name">
-        iron man
+        {{ dataStore.movieTitle}}
     </div>
 </template>
 <script>
-
+    import { mapStores,mapActions } from 'pinia';
+    import { useMovieData } from '@/stores/counter';
+    export default{
+    computed : {
+            ...mapStores(useMovieData)
+        }
+    }
 </script>
 <style scoped>
 @tailwind base;

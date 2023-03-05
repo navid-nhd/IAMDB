@@ -1,11 +1,17 @@
 <template>
     <div class="graph-details">
-        <div class="graph-details-number">1,046,592</div>
+        <div class="graph-details-number">{{dataStore.imDbRatingVotes}}</div>
         <div class="graph-details-text">ratings on IMDB</div>
     </div>
 </template>
 <script>
-
+import { mapStores,mapActions } from 'pinia';
+import { useMovieData } from '@/stores/counter';
+export default{
+computed : {
+        ...mapStores(useMovieData)
+    }
+}
 </script>
 <style scoped>
 .graph-details{

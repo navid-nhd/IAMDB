@@ -1,8 +1,7 @@
 <template>
     <main>
-        {{ counterStore.test }}
         <section class="movie-info">
-            <MovieBgImage />
+            <MovieBgImage/>
             <div class="container">
                 <div class="row movie-info-holder">
                     <div class="hidden lg:block col-lg-3">
@@ -101,7 +100,7 @@
 </template>
 <script >
     import { mapStores,mapActions } from 'pinia';
-    import { useCounterStore } from '@/stores/counter';
+    import { useMovieData } from '@/stores/counter';
 
     import PartTitle from '@/components/iamdb/PartTitle.vue'
     import MovieBgImage from '@/components/iamdb/MovieBgImage.vue'
@@ -129,11 +128,11 @@
         data() {
             return{
                 
-                timeInfo: ['2008','PG-13','2h 6m'],
+                timeInfo: [],
                 detailedInfo : [
                     {
                         title : 'Writers',
-                        amount : 'Mark Fergus, Hawk Ostby, Art Marcum',
+                        amount : "writers",
                     },
                     {
                         title : 'Genres',
@@ -290,10 +289,11 @@
             }
         },
         methods : {
-            ...mapActions(useCounterStore,['increment'])
+            ...mapActions(useMovieData,['increment'])
+
         },
         computed : {
-            ...mapStores(useCounterStore)
+            ...mapStores(useMovieData)
         }
     }
 </script>

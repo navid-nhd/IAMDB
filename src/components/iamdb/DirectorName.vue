@@ -1,10 +1,16 @@
 <template>
     <div class="director-name">
-        Directors: Jon Favreau
+        Directors: {{dataStore.directors}}
     </div>
 </template>
 <script>
-
+import { mapStores,mapActions } from 'pinia';
+import { useMovieData } from '@/stores/counter';
+    export default{
+        computed : {
+            ...mapStores(useMovieData)
+        }
+    }
 </script>
 <style scoped>
 @tailwind base;

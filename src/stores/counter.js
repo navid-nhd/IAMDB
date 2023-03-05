@@ -1,16 +1,38 @@
 import { defineStore } from 'pinia'
 
-export const useCounterStore = defineStore('counter', {
+export const useMovieData = defineStore('data', {
     state : () => {
       return{
-        test: [],
+        searchInput: '',
+        bgImage : '',
+        posterImage: '',
+        movieId : '',
+        movieTitle: '',
+        movieDesc: '',
+        directors: '',
+        year: '',
+        genres: '',
+        imDbRating: '',
+        imDbRatingVotes: '',
+        contentRating: '',
+        countries: '',
+        awards: '',
+        actorList: [],
+        plot: '',
+        writers: '',
       }
     },
     actions : {
-      increment(id){
-        console.log(id)
-        this.test.push(id)
-        console.log(this.test)
+      increment(){
+        
       }
     }
 })
+// import { mapStores,mapActions } from 'pinia';
+// import { useMovieData } from '@/stores/counter';
+// export default{
+// computed : {
+//         ...mapStores(useMovieData)
+//     }
+// }
+// {{dataStore.imDbRating}}

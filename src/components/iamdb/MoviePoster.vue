@@ -1,10 +1,16 @@
 <template>
     <div class="movie-poster-holder">
-        <img class="movie-poster" src="@/assets/images/IronMan.jpg" alt="Iron Man Poster">
+        <img class="movie-poster" :src="dataStore.posterImage" :alt="dataStore.movieTitle">
     </div>
 </template>
 <script>
-
+    import { mapStores,mapActions } from 'pinia';
+    import { useMovieData } from '@/stores/counter';
+    export default{
+        computed : {
+            ...mapStores(useMovieData)
+        }
+    }
 </script>
 <style scoped>
 @tailwind base;
