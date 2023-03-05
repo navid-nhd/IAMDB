@@ -1,5 +1,5 @@
 <template>
-    <div class="graph" :style="`background: conic-gradient(var(--accent-color) 0deg,var(--accent-color) calc(${dataStore.imDbRating}*36)deg, rgba(238, 235, 221, 0.4) calc(${dataStore.imDbRating}*36)deg,  rgba(238, 235, 221, 0.4) 360deg)`">
+    <div class="graph" :style="`background: conic-gradient(var(--accent-color) ${dataStore.graphRate},var(--accent-color) ${dataStore.graphRate}, rgba(238, 235, 221, 0.4) 284deg,  rgba(238, 235, 221, 0.4) 360deg);`">
         <div class="ratings">{{dataStore.imDbRating}}</div>
     </div>
 </template>
@@ -21,7 +21,7 @@ computed : {
 
 .graph{
     @apply w-20 h-20 rounded-full relative text-2xl font-bold;
-    /* background: conic-gradient(var(--accent-color) 0deg,var(--accent-color) 284deg, rgba(238, 235, 221, 0.4) 284deg,  rgba(238, 235, 221, 0.4) 360deg); */
+    /* background: conic-gradient(var(--accent-color) var(--number),var(--accent-color) var(--number), rgba(238, 235, 221, 0.4) 284deg,  rgba(238, 235, 221, 0.4) 360deg); */
 }
 .ratings {
     @apply absolute top-2/4 left-2/4;

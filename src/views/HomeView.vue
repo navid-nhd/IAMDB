@@ -1,6 +1,5 @@
 <template>
   <main class="main">
-    {{input}}
     <div class="wrapper">
       <div class="container">
           <SiteName></SiteName>
@@ -55,23 +54,15 @@ export default{
         this.input = id ;
       },
       fetchInput(){
-        // fetch('https://imdb-api.com/en/API/SearchTitle/k_72zng87l/lost 2004')
-        //       .then( response => response.text())
-        //       .then( res => JSON.parse(res))
-        //       .then( res => {
-        //         this.movieId = res.results[0].id
-        //       })
-        // this.movieLink =   'https://imdb-api.com/en/API/Posters/k_72zng87l/'+ this.movieId + "'"    
+       
         fetch('https://imdb-api.com/en/API/SearchAll/k_72zng87l/' + this.input)
               .then( response => response.text())
               .then( res => JSON.parse(res))
               .then( res => {
-                
                   this.dataStore.movieId = res.results[0].id
                   this.dataStore.movieTitle = res.results[0].title
                   this.dataStore.movieDesc = res.results[0].description
                   this.dataStore.posterImage = res.results[0].image
-                
               })
               .catch(error => {
                 // window.location.href = 'http://localhost:5173/error'
@@ -92,6 +83,9 @@ export default{
                           this.dataStore.movieId = res.id
                           this.dataStore.genres = res.genres
                           this.dataStore.imDbRating = res.imDbRating
+
+                          this.dataStore.graphRate = (res.imDbRating*36) + 'deg'
+
                           this.dataStore.imDbRatingVotes = res.imDbRatingVotes
                           this.dataStore.contentRating = res.contentRating
                           this.dataStore.countries = res.countries
@@ -115,10 +109,8 @@ export default{
                             this.dataStore.similarTitle.push(res.similars[i].title)
                             this.dataStore.similarRating.push(res.similars[i].imDbRating)
                           }
-
                         })
                         .catch(error => {
-                          // window.location.href = 'http://localhost:5173/error'
                           console.log('error', error)
                         });
                   fetch('https://imdb-api.com/API/Posters/k_72zng87l/' + this.dataStore.movieId)
@@ -128,7 +120,6 @@ export default{
                           this.dataStore.bgImage = res.backdrops[1].link
                         })
                         .catch(error => {
-                          // window.location.href = 'http://localhost:5173/error'
                           console.log('error', error)
                         });
                   fetch('https://imdb-api.com/API/Images/k_72zng87l/'+ this.dataStore.movieId+'/Full')
@@ -156,31 +147,15 @@ export default{
         //     })
         },
       testfetch() {
-        // fetch('https://imdb-api.com/en/API/SearchAll/k_72zng87l/avenger')
-        //       .then( response => response.text())
-        //       .then( res => JSON.parse(res))
-        //       .then( res => {
-        //         this.movieId = res.results[0].id
-        //         this.movieLink =   "'https://imdb-api.com/en/API/FAQ/k_72zng87l/"+ this.movieId + "'" 
-        //       })
-              
-         console.log       
-        fetch('https://imdb-api.com/en/API/FAQ/k_72zng87l/tt1375666')
+        fetch('https://imdb-api.com/en/API/Title/k_72zng87l/tt1375666')
               .then( response => response.text())
               .then( res => JSON.parse(res))
               .then( res => {
-                
-                
-                console.log(res)
-              })
-              // setTimeout(() => {
-              //     this.movieLink =  'https://imdb-api.com/en/API/FAQ/k_72zng87l/'+this.dataStore.movieId
-              //     console.log(this.movieLink)
-              // }, "3000");
-            
+                this.dataStore.graphRate = (res.imDbRating*36) + 'deg'
+                console.log(this.dataStore.graphRate)
+              })     
       }
-      // 'https://imdb-api.com/en/API/FAQ/k_72zng87l/tt0458339'
-      // https://imdb-api.com/en/API/SearchAll/k_72zng87l/avenger
+
   },
   computed: {
     ...mapStores(useMovieData)

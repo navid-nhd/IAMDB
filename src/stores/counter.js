@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 export const useMovieData = defineStore('data', {
     state : () => {
       return{
+        graphRate: '',
         searchInput: '',
         bgImage : '',
         posterImage: '',
