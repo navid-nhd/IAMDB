@@ -20,6 +20,9 @@ export const useMovieData = defineStore('data', {
         actorList: [],
         plot: '',
         writers: '',
+        timeInfo:[],
+        tableInfo: [],
+        actorsList:[]
       }
     },
     actions : {
@@ -35,4 +38,4 @@ export const useMovieData = defineStore('data', {
 //         ...mapStores(useMovieData)
 //     }
 // }
-// {{dataStore.imDbRating}}
+// {{dataStore.imDbRating}}k_71qyebui

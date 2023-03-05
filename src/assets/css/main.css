@@ -11,6 +11,7 @@
     --primary-text-color: rgb(238, 235, 221);
     --secondary-color: rgb(238, 235, 221,0.4);
     --accent-color: #CE1212;
+    --colored-graph : calc(${dataStore.imDbRating}*36)
 }
 /* -----Desktop----- */
 

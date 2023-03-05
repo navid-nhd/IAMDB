@@ -22,7 +22,7 @@
                             <!------------ Movie Informations -->
                             <div class="movie-info-time my-4 lg:my-5">
                                 <ul class="list-none flex gap-3">
-                                    <li v-for="item in timeInfo" class="list-items flex items-center">
+                                    <li v-for="item in dataStore.timeInfo" class="list-items flex items-center">
                                         <TimeInfoItem>{{item}}</TimeInfoItem>
                                     </li>
                                 </ul>
@@ -41,7 +41,8 @@
                             <div class="details-table">
                                 <DetailsTable v-for="(item,index) in detailedInfo" 
                                                 :key="index" 
-                                                :tableProperty="item">
+                                                :tableProperty="item"
+                                                :tableIndex="index">
                                 </DetailsTable>
                             </div>
                         </div>
@@ -132,7 +133,7 @@
                 detailedInfo : [
                     {
                         title : 'Writers',
-                        amount : "writers",
+                        amount : '',
                     },
                     {
                         title : 'Genres',

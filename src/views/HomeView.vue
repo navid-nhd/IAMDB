@@ -55,37 +55,40 @@ export default{
         this.input = id ;
       },
       fetchInput(){
-        // fetch('https://imdb-api.com/en/API/SearchTitle/k_ygw2uk2v/lost 2004')
+        // fetch('https://imdb-api.com/en/API/SearchTitle/k_71qyebui/lost 2004')
         //       .then( response => response.text())
         //       .then( res => JSON.parse(res))
         //       .then( res => {
         //         this.movieId = res.results[0].id
         //       })
-        // this.movieLink =   'https://imdb-api.com/en/API/Posters/k_ygw2uk2v/'+ this.movieId + "'"    
-        fetch('https://imdb-api.com/en/API/SearchAll/k_ygw2uk2v/' + this.input)
+        // this.movieLink =   'https://imdb-api.com/en/API/Posters/k_71qyebui/'+ this.movieId + "'"    
+        fetch('https://imdb-api.com/en/API/SearchAll/k_71qyebui/' + this.input)
               .then( response => response.text())
               .then( res => JSON.parse(res))
               .then( res => {
-                if(res.results[0].id){
+                
                   this.dataStore.movieId = res.results[0].id
                   this.dataStore.movieTitle = res.results[0].title
                   this.dataStore.movieDesc = res.results[0].description
                   this.dataStore.posterImage = res.results[0].image
-                }else{
-                  fetchInput()
-                }
+                
               })
               .catch(error => {
                 // window.location.href = 'http://localhost:5173/error'
                 console.log('error', error)
               });
               setTimeout(() => {
-                  fetch('https://imdb-api.com/en/API/Title/k_ygw2uk2v/' + this.dataStore.movieId)
+                  fetch('https://imdb-api.com/en/API/Title/k_71qyebui/' + this.dataStore.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
                           this.dataStore.directors = res.directors
                           this.dataStore.year = res.year
+
+                          this.dataStore.timeInfo.push(res.year)
+                          this.dataStore.timeInfo.push(res.contentRating)
+                          this.dataStore.timeInfo.push(res.runtimeStr)
+
                           this.dataStore.movieId = res.id
                           this.dataStore.genres = res.genres
                           this.dataStore.imDbRating = res.imDbRating
@@ -96,12 +99,20 @@ export default{
                           this.dataStore.actorList = res.actorList
                           this.dataStore.plot = res.plot
                           this.dataStore.writers = res.writers
+
+                          this.dataStore.tableInfo.push(res.writers)
+                          this.dataStore.tableInfo.push(res.genres)
+                          this.dataStore.tableInfo.push(res.awards)
+                          this.dataStore.tableInfo.push(res.countries)
+                          this.dataStore.tableInfo.push(res.imDbRating)
+
+                          this.dataStore.actorsList = res.actorList
                         })
                         .catch(error => {
                           // window.location.href = 'http://localhost:5173/error'
                           console.log('error', error)
                         });
-                  fetch('https://imdb-api.com/API/Posters/k_ygw2uk2v/' + this.dataStore.movieId)
+                  fetch('https://imdb-api.com/API/Posters/k_71qyebui/' + this.dataStore.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
@@ -113,34 +124,35 @@ export default{
                         });
               }, "5000");
         
-        // axios.get('https://imdb-api.com/en/API/Search/k_ygw2uk2v/inception 2010')
+        // axios.get('https://imdb-api.com/en/API/Search/k_71qyebui/inception 2010')
         //     .then(res => {
         //       console.log(res)
         //     })
         },
       testfetch() {
-        // fetch('https://imdb-api.com/en/API/SearchAll/k_ygw2uk2v/avenger')
+        // fetch('https://imdb-api.com/en/API/SearchAll/k_71qyebui/avenger')
         //       .then( response => response.text())
         //       .then( res => JSON.parse(res))
         //       .then( res => {
         //         this.movieId = res.results[0].id
-        //         this.movieLink =   "'https://imdb-api.com/en/API/FAQ/k_ygw2uk2v/"+ this.movieId + "'" 
+        //         this.movieLink =   "'https://imdb-api.com/en/API/FAQ/k_71qyebui/"+ this.movieId + "'" 
         //       })
               
-                
-        fetch('https://imdb-api.com/en/API/Title/k_ygw2uk2v/tt1375666')
+         console.log       
+        fetch('https://imdb-api.com/en/API/Title/k_71qyebui/tt1375666')
               .then( response => response.text())
               .then( res => JSON.parse(res))
               .then( res => {
+  
                 console.log(res)
               })
               // setTimeout(() => {
-              //     this.movieLink =  'https://imdb-api.com/en/API/FAQ/k_ygw2uk2v/'+this.dataStore.movieId
+              //     this.movieLink =  'https://imdb-api.com/en/API/FAQ/k_71qyebui/'+this.dataStore.movieId
               //     console.log(this.movieLink)
               // }, "3000");
             
       }
-      // 'https://imdb-api.com/en/API/FAQ/k_ygw2uk2v/tt0458339'
+      // 'https://imdb-api.com/en/API/FAQ/k_71qyebui/tt0458339'
       // https://imdb-api.com/en/API/SearchAll/k_ygw2uk2v/avenger
   },
   computed: {

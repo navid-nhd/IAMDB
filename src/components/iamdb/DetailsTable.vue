@@ -5,18 +5,26 @@
                 {{ tableProperty.title }}
             </div>
             <div class="second-column col-7 col-lg-8">
-                {{ tableProperty.amount }}
+                {{ dataStore.tableInfo[tableIndex]}}
             </div>
         </div>
     </div>
     
 </template>
 <script>
+import { mapStores,mapActions } from 'pinia';
+import { useMovieData } from '@/stores/counter';
     export default{
         props : {
             tableProperty : {
                 type : Object,
+            },
+            tableIndex : {
+                type : String,
             }
+        },
+        computed : {
+            ...mapStores(useMovieData)
         }
     }
 </script>
