@@ -12,7 +12,7 @@
                   </div>
                   <div class="search-btn flex-shrink-0 flex-grow-0 basis-auto w-full lg:w-1/5">
                       <router-link to="/result" >
-                        <button  class="text" @click="fetchInput()">
+                        <button  class="text" @click="dataStore.fetchInput(this.input)">
                               <span>Search</span>
                               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -50,109 +50,13 @@ export default{
       }
     },
     methods: {
+      ...mapActions(useMovieData,['fetchInput']),
       getInput(id){
         this.input = id ;
       },
-      fetchInput(){
-        fetch('https://imdb-api.com/en/API/SearchAll/k_1lezkqm0/' + this.input)
-              .then( response => response.text())
-              .then( res => JSON.parse(res))
-              .then( res => {
-                  this.dataStore.movieId = res.results[0].id
-                  this.dataStore.movieTitle = res.results[0].title
-                  this.dataStore.movieDesc = res.results[0].description
-                  this.dataStore.posterImage = res.results[0].image
-              })
-              .catch(error => {
-                window.location.href = 'http://localhost:5173/error'
-                console.log('error', error)
-              });
-              setTimeout(() => {
-                  fetch('https://imdb-api.com/en/API/Title/k_1lezkqm0/' + this.dataStore.movieId)
-                        .then( response => response.text())
-                        .then( res => JSON.parse(res))
-                        .then( res => {
-                          this.dataStore.directors = res.directors
-                          this.dataStore.year = res.year
-
-                          this.dataStore.timeInfo.push(res.year)
-                          this.dataStore.timeInfo.push(res.contentRating)
-                          this.dataStore.timeInfo.push(res.runtimeStr)
-
-                          this.dataStore.movieId = res.id
-                          this.dataStore.genres = res.genres
-                          this.dataStore.imDbRating = res.imDbRating
-
-                          this.dataStore.graphRate = (res.imDbRating*36) + 'deg'
-
-                          this.dataStore.imDbRatingVotes = res.imDbRatingVotes
-                          this.dataStore.contentRating = res.contentRating
-                          this.dataStore.countries = res.countries
-                          this.dataStore.awards = res.awards
-                          this.dataStore.actorList = res.actorList
-                          this.dataStore.plot = res.plot
-                          this.dataStore.writers = res.writers
-
-                          this.dataStore.tableInfo.push(res.writers)
-                          this.dataStore.tableInfo.push(res.genres)
-                          this.dataStore.tableInfo.push(res.awards)
-                          this.dataStore.tableInfo.push(res.countries)
-                          this.dataStore.tableInfo.push(res.imDbRating)
-                          for (let i = 0; i < 10; i++) {
-                            this.dataStore.actorsName.push(res.actorList[i].name)
-                            this.dataStore.actorsRole.push(res.actorList[i].asCharacter)
-                            this.dataStore.actorsImages.push(res.actorList[i].image)
-                          }
-                          for (let i = 0; i < 12; i++) {
-                            this.dataStore.similarImage.push(res.similars[i].image)
-                            this.dataStore.similarTitle.push(res.similars[i].title)
-                            this.dataStore.similarRating.push(res.similars[i].imDbRating)
-                          }
-                  })
-                  .catch(error => {
-                      console.log('error', error)
-                  });
-                  fetch('https://imdb-api.com/API/Posters/k_1lezkqm0/' + this.dataStore.movieId)
-                        .then( response => response.text())
-                        .then( res => JSON.parse(res))
-                        .then( res => {
-                          this.dataStore.bgImage = res.backdrops[1].link
-                        })
-                        .catch(error => {
-                          console.log('error', error)
-                  });
-                  fetch('https://imdb-api.com/API/Images/k_1lezkqm0/'+ this.dataStore.movieId+'/Full')
-                        .then( response => response.text())
-                        .then( res => JSON.parse(res))
-                        .then( res => {
-                          for (let i = 0; i < 10; i++) {
-                            this.dataStore.movieImages.push(res.items[i].image)
-                          }
-                  });
-                  fetch('https://imdb-api.com/en/API/FAQ/k_1lezkqm0/'+ this.dataStore.movieId)
-                        .then( response => response.text())
-                        .then( res => JSON.parse(res))
-                        .then( res => {
-                          for (let i = 0; i < 15; i++) {
-                            this.dataStore.movieQuestion.push(res.items[i].question)
-                            this.dataStore.movieAnswere.push(res.items[i].answer)
-                          }
-                  })
-                  fetch('https://imdb-api.com/API/Trailer/k_1lezkqm0/'+ this.dataStore.movieId)
-                        .then( response => response.text())
-                        .then( res => JSON.parse(res))
-                        .then( res => {
-                            this.dataStore.movieThrailer = res.link 
-                  })
-              }, "7000");
-        
-        // axios.get('https://imdb-api.com/en/API/Search/k_1lezkqm0/inception 2010')
-        //     .then(res => {
-        //       console.log(res)
-        //     })
-        },
+      
       testfetch() {
-        fetch('https://imdb-api.com/API/Trailer/k_1lezkqm0/tt0110413')
+        fetch('https://imdb-api.com/API/Trailer/k_ygw2uk2v/tt0110413')
               .then( response => response.text())
               .then( res => JSON.parse(res))
               .then( res => {

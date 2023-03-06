@@ -150,7 +150,7 @@
         data() {            
             return{
                 settings: {
-                    itemsToShow: 6,
+                    itemsToShow: 4,
                     snapAlign: 'center',
                     },
                     // breakpoints are mobile first
@@ -259,9 +259,8 @@
         background-color: rgba(238, 235, 221, 0.1);
     }
     @media (min-width: 992px) {
-        .carousel__slide {
-            padding: 10px;
-            
+        .carousel__slide {  
+            min-width: 320px;
         }
     }
 

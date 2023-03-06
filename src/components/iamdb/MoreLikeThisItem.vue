@@ -1,17 +1,18 @@
 <template>
-    <div class="w-full">
-        <div class="similar-image-holder basis-auto w-full">
-            <img class="similar-img w-full" :src="dataStore.similarImage[slideNum]" :alt="dataStore.similarTitle[slideNum]">
-        </div>
-        <div class="flex justify-between pr-2 py-2 w-full">
-            <div class="sm-name">{{dataStore.similarTitle[slideNum]}}</div>
-            <div class="sm-rating flex gap-2 pr-3 items-center">
-                <HeartIcon :slideNum="slideNum"></HeartIcon>
-                <img class="star-icon" src="src/assets/images/StarIcon.png" alt="add to favorite">
-                {{dataStore.similarRating[slideNum]}}
+        <div class="w-full" >
+            <div class="similar-image-holder basis-auto w-full">
+                <img class="similar-img w-full" :src="dataStore.similarImage[slideNum]" :alt="dataStore.similarTitle[slideNum]">
+            </div>
+            <div class="flex justify-between pr-2 py-2 w-full">
+                    <div class="sm-name">{{dataStore.similarTitle[slideNum]}}</div>
+                <div class="sm-rating flex gap-2 pr-3 items-center">
+                    <HeartIcon :slideNum="slideNum"></HeartIcon>
+                    <img class="star-icon" src="src/assets/images/StarIcon.png" alt="add to favorite">
+                    {{dataStore.similarRating[slideNum]}}
+                </div>
             </div>
         </div>
-    </div>
+    
 </template>
 <script>
 import { mapStores,mapActions } from 'pinia';
