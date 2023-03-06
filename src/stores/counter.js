@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useMovieData = defineStore('data', {
     state : () => {
       return{
-        result: '',
+        isInArrayResult: '',
         relatedIndex: '',
         graphRate: '',
         searchInput: '',
@@ -40,24 +40,16 @@ export const useMovieData = defineStore('data', {
       }
     },
     actions : {
-      addOrRemoveFavList(){
-        this.result = this.favoriteList.some( item => item === this.movieTitle)
-        console.log(this.result)
-        if(!this.result){
-          this.favoriteList.push(this.movieTitle)
+      addOrRemoveFavList(id){
+        this.isInArrayResult = this.favoriteList.some( item => item === id)
+        console.log(this.isInArrayResult)
+        if(!this.isInArrayResult){
+          this.favoriteList.push(id)
         }else{
-          this.relatedIndex = this.favoriteList.findIndex( item => item === this.movieTitle)
+          this.relatedIndex = this.favoriteList.findIndex( item => item === id)
           this.favoriteList.splice(this.relatedIndex,1)
         }
           
       }
     }
 })
-// import { mapStores,mapActions } from 'pinia';
-// import { useMovieData } from '@/stores/counter';
-// export default{
-// computed : {
-//         ...mapStores(useMovieData)
-//     }
-// }
-// {{dataStore.imDbRating}}k_71qyebui

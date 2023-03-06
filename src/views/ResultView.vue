@@ -36,7 +36,7 @@
                                     <ShareButton></ShareButton>
                                 </a>
                                 <LikeButton></LikeButton>
-                                <!-- {{ dataStore.favoriteList }} -->
+                                {{ dataStore.favoriteList }}
                             </div>
                             <!------------ Description ------------>
                             <div class="movie-description my-10">
@@ -81,6 +81,7 @@
         <section class="similar-movies-offer">
             <div class="container mt-12 mb-6">
                 <PartTitle>More like this</PartTitle>
+                {{ dataStore.favoriteList }}
             </div>
             <!-- <ul  class="list flex flex-nowrap shrink-0 basis-auto">
                 <li v-for="(item,index) in 10"  
@@ -92,19 +93,7 @@
             <Carousel  :items-to-show="6" :wrap-around="true">
                 <Slide  v-for="slide in 10" :key="slide">
                     <div class="carousel__item flex-wrap grow-0 shrink-0">
-                        <div class="w-full">
-                            <div class="similar-image-holder basis-auto w-full">
-                                <img class="similar-img w-full" :src="dataStore.similarImage[slide]" :alt="dataStore.similarTitle[slide]">
-                            </div>
-                            <div class="flex justify-between pr-2 py-2 w-full">
-                                <div class="sm-name">{{dataStore.similarTitle[slide]}}</div>
-                                <div class="sm-rating flex gap-2 pr-3 items-center">
-                                    <HeartIcon></HeartIcon>
-                                    <img class="star-icon" src="src/assets/images/StarIcon.png" alt="add to favorite">
-                                    {{dataStore.similarRating[slide]}}
-                                </div>
-                            </div>
-                        </div>
+                        <MoreLikeThisItem :slideNum="slide"></MoreLikeThisItem>  
                     </div>
                 </Slide>
                 <template #addons>
@@ -151,12 +140,13 @@
     import MovieImageGallery from '@/components/iamdb/MovieImageGallery.vue'
     import SimilarMovie from '@/components/iamdb/SimilarMovie.vue'
     import HeartIcon from '@/components/iamdb/HeartIcon.vue'
+    import MoreLikeThisItem from '@/components/iamdb/MoreLikeThisItem.vue'
     import QuestionBox from '@/components/iamdb/QuestionBox.vue'
 
     export default{
         name: 'App',
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,MovieImageGallery,QuestionBox,SimilarMovie,Carousel,Slide,Pagination,Navigation,HeartIcon
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,MovieImageGallery,QuestionBox,SimilarMovie,Carousel,Slide,Pagination,Navigation,HeartIcon,MoreLikeThisItem,
         },
         data() {            
             return{
@@ -231,25 +221,7 @@
         border-radius: 50%;
     }
     
-    .sm-name{
-        max-width: 70%;
-        max-height: 30px; 
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        /* position: relative */
-    }
-    .sm-name,.sm-rating{
-        @apply text-base font-bold;
-    }
-    .favorite-icon,.star-icon{
-        @apply w-4 h-4;
-    }
-    @media (min-width: 992px) {
-        .sm-name,.sm-rating{
-            @apply text-lg;
-        }
-    }
+    
 
     @import '@/assets/css/font.css';  
     @import '@/assets/css/bootstrap-grid.css';
