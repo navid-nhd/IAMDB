@@ -2,8 +2,8 @@
   <main class="main">
     <div class="wrapper">
       <div class="container">
-          <SiteName></SiteName>
-          <div class="input-holder pt-32 lg:pt-24 xl:pt-30 2xl:pt-56">
+          <SiteName ></SiteName>
+          <div class="input-holder pt-32 lg:pt-36 xl:pt-48 2xl:pt-80">
             <!-- <InputBox class="input-box" @gettingInput="getInput"></InputBox> -->
             <div class=" flex flex-wrap lg:flex-nowrap  items-center">
                   <div class="input flex-shrink-0 flex-grow-0 basis-auto w-full lg:w-4/5   lg:pr-3" >
@@ -22,7 +22,7 @@
                   </div>
             </div>
           </div>
-            <div @click="testfetch()">fetch</div>
+            <!-- <div @click="testfetch()">fetch</div> -->
       </div>
     </div>
   </main>
@@ -54,8 +54,7 @@ export default{
         this.input = id ;
       },
       fetchInput(){
-       
-        fetch('https://imdb-api.com/en/API/SearchAll/k_hx4oobgs/' + this.input)
+        fetch('https://imdb-api.com/en/API/SearchAll/k_1lezkqm0/' + this.input)
               .then( response => response.text())
               .then( res => JSON.parse(res))
               .then( res => {
@@ -65,11 +64,11 @@ export default{
                   this.dataStore.posterImage = res.results[0].image
               })
               .catch(error => {
-                // window.location.href = 'http://localhost:5173/error'
+                window.location.href = 'http://localhost:5173/error'
                 console.log('error', error)
               });
               setTimeout(() => {
-                  fetch('https://imdb-api.com/en/API/Title/k_hx4oobgs/' + this.dataStore.movieId)
+                  fetch('https://imdb-api.com/en/API/Title/k_1lezkqm0/' + this.dataStore.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
@@ -109,11 +108,11 @@ export default{
                             this.dataStore.similarTitle.push(res.similars[i].title)
                             this.dataStore.similarRating.push(res.similars[i].imDbRating)
                           }
-                        })
-                        .catch(error => {
-                          console.log('error', error)
-                        });
-                  fetch('https://imdb-api.com/API/Posters/k_hx4oobgs/' + this.dataStore.movieId)
+                  })
+                  .catch(error => {
+                      console.log('error', error)
+                  });
+                  fetch('https://imdb-api.com/API/Posters/k_1lezkqm0/' + this.dataStore.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
@@ -121,16 +120,16 @@ export default{
                         })
                         .catch(error => {
                           console.log('error', error)
-                        });
-                  fetch('https://imdb-api.com/API/Images/k_hx4oobgs/'+ this.dataStore.movieId+'/Full')
+                  });
+                  fetch('https://imdb-api.com/API/Images/k_1lezkqm0/'+ this.dataStore.movieId+'/Full')
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
                           for (let i = 0; i < 10; i++) {
                             this.dataStore.movieImages.push(res.items[i].image)
                           }
-                        });
-                  fetch('https://imdb-api.com/en/API/FAQ/k_hx4oobgs/'+ this.dataStore.movieId)
+                  });
+                  fetch('https://imdb-api.com/en/API/FAQ/k_1lezkqm0/'+ this.dataStore.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
@@ -138,16 +137,22 @@ export default{
                             this.dataStore.movieQuestion.push(res.items[i].question)
                             this.dataStore.movieAnswere.push(res.items[i].answer)
                           }
-                        })
+                  })
+                  fetch('https://imdb-api.com/API/Trailer/k_1lezkqm0/'+ this.dataStore.movieId)
+                        .then( response => response.text())
+                        .then( res => JSON.parse(res))
+                        .then( res => {
+                            this.dataStore.movieThrailer = res.link 
+                  })
               }, "7000");
         
-        // axios.get('https://imdb-api.com/en/API/Search/k_hx4oobgs/inception 2010')
+        // axios.get('https://imdb-api.com/en/API/Search/k_1lezkqm0/inception 2010')
         //     .then(res => {
         //       console.log(res)
         //     })
         },
       testfetch() {
-        fetch('https://imdb-api.com/en/API/Title/k_hx4oobgs/tt1375666')
+        fetch('https://imdb-api.com/API/Trailer/k_1lezkqm0/tt0110413')
               .then( response => response.text())
               .then( res => JSON.parse(res))
               .then( res => {
@@ -155,22 +160,21 @@ export default{
                 console.log(res)
               })     
       }
-
-  },
-  computed: {
-    ...mapStores(useMovieData)
-  },
+    },
+    computed: {
+      ...mapStores(useMovieData)
+    },
 }
 </script>
 <style>
     @import '@/assets/css/font.css';  
     @import '@/assets/css/bootstrap-grid.css';
- .main {
+.main {
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
     position: relative;
-  }
+}
 .wrapper{
   width: 100vw;
   height: 100%;
@@ -188,6 +192,26 @@ export default{
 .search-btn{
   @apply flex-shrink-0 flex-grow-0 basis-auto w-full lg:w-1/5;
 } */
+input[type=text]{
+    @apply w-full rounded-[100px] py-3 px-8 border-2 border-zinc-500;
+    background-color: var(--bg-color);
+}
+input[type=text]::placeholder{
+    @apply text-base font-normal;
+}
+input.large { 
+    @apply inline-block;
+}
+input.small { 
+    @apply hidden; 
+}
+.search-btn {
+    @apply py-4;
+}
+.text{
+    @apply flex justify-center items-center gap-3 w-full text-base rounded-[100px] bg-red-700 hover:bg-red-800 py-3 px-8;
+    text-align: center;
+} 
 @media (min-width: 450px) {
   .wrapper{
     background-position: 0 0;
@@ -210,6 +234,15 @@ export default{
   .content-holder{
     @apply justify-end;
   }
+  input.large { 
+      @apply hidden;  
+  }
+  input.small { 
+      @apply inline-block; 
+  }
+  .text{
+      @apply text-xl;
+  }
 }  
 @media (min-width: 1200px) {
   .wrapper{
@@ -217,35 +250,6 @@ export default{
     background-position: -50px -90px;
   }
 }  
-input[type=text]{
-        @apply w-full rounded-[100px] py-3 px-8 border-2 border-zinc-500;
-        background-color: var(--bg-color);
-    }
-    input[type=text]::placeholder{
-        @apply text-base font-normal;
-    }
-    input.large { 
-        @apply inline-block;
-    }
-    input.small { 
-        @apply hidden; 
-    }
-    .search-btn {
-        @apply py-4;
-    }
-    .text{
-        @apply flex justify-center items-center gap-3 w-full text-base rounded-[100px] bg-red-700 hover:bg-red-800 py-3 px-8;
-        text-align: center;
-    }
-    @media (min-width: 992px) {
-        input.large { 
-            @apply hidden;  
-        }
-        input.small { 
-            @apply inline-block; 
-        }
-        .text{
-            @apply text-xl;
-        }
-    }
+
+   
 </style>

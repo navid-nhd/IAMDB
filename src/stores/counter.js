@@ -3,6 +3,8 @@ import { defineStore } from 'pinia'
 export const useMovieData = defineStore('data', {
     state : () => {
       return{
+        result: '',
+        relatedIndex: '',
         graphRate: '',
         searchInput: '',
         bgImage : '',
@@ -32,12 +34,22 @@ export const useMovieData = defineStore('data', {
         similarRating: [],
         movieQuestion: [],
         movieAnswere: [],
+        movieThrailer: '',
         castShowNumber: 5,
+        favoriteList: [],
       }
     },
     actions : {
-      increment(){
-        
+      addOrRemoveFavList(){
+        this.result = this.favoriteList.some( item => item === this.movieTitle)
+        console.log(this.result)
+        if(!this.result){
+          this.favoriteList.push(this.movieTitle)
+        }else{
+          this.relatedIndex = this.favoriteList.findIndex( item => item === this.movieTitle)
+          this.favoriteList.splice(this.relatedIndex,1)
+        }
+          
       }
     }
 })

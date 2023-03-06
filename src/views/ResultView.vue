@@ -29,9 +29,14 @@
                             </div>
                             <!------------ Buttons ------------>
                             <div class="movie-btn-holder flex gap-4 lg:gap-5">
-                                <ThrailerPlayButton></ThrailerPlayButton>
-                                <ShareButton></ShareButton>
+                                <a :href="dataStore.movieThrailer" target="_blank">
+                                    <ThrailerPlayButton></ThrailerPlayButton>
+                                </a>
+                                <a href="https://twitter.com/i/flow/single_sign_on" target="_blank">
+                                    <ShareButton></ShareButton>
+                                </a>
                                 <LikeButton></LikeButton>
+                                <!-- {{ dataStore.favoriteList }} -->
                             </div>
                             <!------------ Description ------------>
                             <div class="movie-description my-10">
@@ -84,8 +89,8 @@
                     <SimilarMovie :similarMovieData="item" :i="index"></SimilarMovie>
                 </li> 
             </ul> -->
-            <Carousel :items-to-show="6" :wrap-around="true">
-                <Slide v-for="slide in 10" :key="slide">
+            <Carousel  :items-to-show="6" :wrap-around="true">
+                <Slide  v-for="slide in 10" :key="slide">
                     <div class="carousel__item flex-wrap grow-0 shrink-0">
                         <div class="w-full">
                             <div class="similar-image-holder basis-auto w-full">
@@ -94,24 +99,11 @@
                             <div class="flex justify-between pr-2 py-2 w-full">
                                 <div class="sm-name">{{dataStore.similarTitle[slide]}}</div>
                                 <div class="sm-rating flex gap-2 pr-3 items-center">
-                                    <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" :class="`bi ${favClass}`" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                    </svg>
+                                    <HeartIcon></HeartIcon>
                                     <img class="star-icon" src="src/assets/images/StarIcon.png" alt="add to favorite">
                                     {{dataStore.similarRating[slide]}}
                                 </div>
                             </div>
-                            <!-- <div class="similar-movie-description">
-                                <div class="sm-name">{{dataStore.similarTitle[slide]}}</div>
-                                <div class="sm-status flex gap-2 items-center">
-                                    <div class="sm-star">
-                                        <img class="star-icon" src="src/assets/images/StarIcon.png" alt="add to favorite">
-                                    </div>
-                                    <div class="sm-rating">
-                                        {{dataStore.similarRating[slide]}}
-                                    </div>
-                                </div>
-                            </div>   -->
                         </div>
                     </div>
                 </Slide>
@@ -123,7 +115,7 @@
         <section class="FAQs">
             <div class="container">
                 <PartTitle class="mt-16 mb-6">FAQs</PartTitle>
-                <ul class="mb-10">
+                <ul class="mb-10" v-if="dataStore.movieQuestion.length">
                     <li v-for="(item,index) in 15" 
                                 :key="index" 
                                 class="py-1.5">
@@ -158,12 +150,13 @@
     import ShowMoreBtn from '@/components/iamdb/ShowMoreBtn.vue'
     import MovieImageGallery from '@/components/iamdb/MovieImageGallery.vue'
     import SimilarMovie from '@/components/iamdb/SimilarMovie.vue'
+    import HeartIcon from '@/components/iamdb/HeartIcon.vue'
     import QuestionBox from '@/components/iamdb/QuestionBox.vue'
 
     export default{
         name: 'App',
         components : {
-            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,MovieImageGallery,QuestionBox,SimilarMovie,Carousel,Slide,Pagination,Navigation,
+            MovieBgImage,MoviePoster,RatingGraph,VoteNumbers,MovieName,DirectorName,TimeInfoItem,ThrailerPlayButton,ShareButton,LikeButton,MovieDescription,DetailsTable,PartTitle,CastItem,ShowMoreBtn,MovieImageGallery,QuestionBox,SimilarMovie,Carousel,Slide,Pagination,Navigation,HeartIcon
         },
         data() {            
             return{
@@ -205,8 +198,7 @@
             }
         },
         methods : {
-            ...mapActions(useMovieData,['increment'])
-
+            ...mapActions(useMovieData,['increment']),
         },
         computed : {
             ...mapStores(useMovieData)
@@ -228,7 +220,7 @@
 
     .carousel__slide {
         padding: 10px;
-        /* min-width: 270px; */
+        min-width: 270px;
     }
 
     .carousel__prev,
