@@ -36,7 +36,6 @@
                                     <ShareButton></ShareButton>
                                 </a>
                                 <LikeButton></LikeButton>
-                                {{ dataStore.favoriteList }}
                             </div>
                             <!------------ Description ------------>
                             <div class="movie-description my-10">
@@ -81,7 +80,7 @@
         <section class="similar-movies-offer">
             <div class="container mt-12 mb-6">
                 <PartTitle>More like this</PartTitle>
-                {{ dataStore.favoriteList }}
+                favorite List: {{ dataStore.favoriteList }}
             </div>
             <!-- <ul  class="list flex flex-nowrap shrink-0 basis-auto">
                 <li v-for="(item,index) in 10"  
