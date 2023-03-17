@@ -116,7 +116,7 @@ export const useMovieData = defineStore('data', {
 
                           this.graphRate = (res.imDbRating*36) + 'deg'
 
-                          this.imDbRatingVotes = res.imDbRatingVotes.toLocaleString()
+                          this.imDbRatingVotes = res.imDbRatingVotes.toLocaleString("fi-FI")
                           this.contentRating = res.contentRating
                           this.countries = res.countries
                           this.awards = res.awards

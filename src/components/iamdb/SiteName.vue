@@ -12,9 +12,14 @@
     color: var(--primary-text-color);
     padding-top: 340px;
 }
+@media (min-width: 450px) {
+    .SiteTitle{
+        padding-top: 350px;
+    }
+}
 @media (min-width: 768px) {
     .SiteTitle{
-        padding-top: 400px;
+        padding-top: 500px;
     }
 }
 @media (min-width: 992px) {

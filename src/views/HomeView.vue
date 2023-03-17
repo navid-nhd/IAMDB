@@ -4,7 +4,7 @@
       <div class="container">
           <SiteName ></SiteName>
           <form>
-            <div class="input-holder pt-48 lg:pt-36 xl:pt-48">
+            <div class="input-holder">
               <div class=" flex flex-wrap lg:flex-nowrap  items-center">
                   <div class="input flex-shrink-0 flex-grow-0 basis-auto w-full lg:w-4/5  lg:pr-3 relative" >
                     <!-----------------  OFFER LIST PART ----------------------->
@@ -159,6 +159,9 @@ input.small {
     @apply flex justify-center items-center gap-3 w-full text-base rounded-[100px] bg-red-700 hover:bg-red-800 py-3 px-8;
     text-align: center;
 } 
+.input-holder{
+  padding-top: 200px;
+}
 @media (min-width: 450px) {
   .wrapper{
     background-position: 0 0;
@@ -189,11 +192,17 @@ input.small {
   .text{
       @apply text-xl;
   }
+  .input-holder{
+    padding-top: 130px;
+  }
 }  
 @media (min-width: 1200px) {
   .wrapper{
     width: 90%;
     background-position: -50px -90px;
+  }
+  .input-holder{
+    padding-top: 180px;
   }
 }  
 
