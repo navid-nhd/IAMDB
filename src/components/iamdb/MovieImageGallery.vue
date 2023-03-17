@@ -29,6 +29,13 @@
                         </svg>
                     </div>
                 </div>
+                <!-- pagination -->
+                <div class="pagination">
+                    <span v-for="(slide, i) in this.dataStore.movieImages.length"
+                        :class="{active : i === slideNum}"
+                        @click="changeSlideNum(i)">
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -72,6 +79,9 @@ import { useMovieData } from '@/stores/counter';
                 }else{
                     this.slideNum += 1
                 }
+            },
+            changeSlideNum(i){
+                this.slideNum = i
             }
 
         },
@@ -128,5 +138,18 @@ import { useMovieData } from '@/stores/counter';
     }
     .chevron-right > svg,.chevron-left > svg{
         padding: 5px;
+    }
+    .pagination{
+        @apply absolute -bottom-12 w-full flex justify-center items-center gap-4;
+    }
+    .pagination span{
+        @apply w-4 h-4 bg-white;
+        cursor: pointer;
+        padding: 2px;
+        border-radius: 50%;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06) ;
+    }
+    .pagination span.active{
+        @apply w-5 h-5 bg-red-600 opacity-60;
     }
 </style>
