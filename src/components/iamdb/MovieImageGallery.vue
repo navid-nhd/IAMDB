@@ -4,7 +4,7 @@
             <div class="picture-holder">
                 <img class="gallery-img" :src="dataStore.movieImages[i]" alt=""/>
                 <div class="overlay-holder">
-                    <img class="overlay-picture" src="src/assets/images/Vector.png"/>
+                    <img class="overlay-picture" src="@/assets/images/Vector.png"/>
                 </div>
             </div>
         </div>
@@ -12,7 +12,7 @@
             <div class="modal">
                 <img class="modal-picture" :src="dataStore.movieImages[i]" />
                 <div class="close-btn" @click="isHidden()">
-                    <img src="src/assets/images/close.png" alt="" />
+                    <img src="@/assets/images/close.png" alt="" />
                 </div>
             </div>
         </div>  

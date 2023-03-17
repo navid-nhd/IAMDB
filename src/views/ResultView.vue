@@ -52,15 +52,17 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-3">
-                        <PartTitle class="mt-14">Cast & Crew</PartTitle>
-                        <ul>
-                            <li v-for="(item,index) in dataStore.castShowNumber"
-                                :key="index"    
-                                class="mt-6 transition-all">
-                                <CastItem :personalInfo="item" :i="index"></CastItem>
-                            </li>
-                        </ul>
-                        <ShowMoreBtn class="py-10"></ShowMoreBtn>
+                        <nav>
+                            <PartTitle class="mt-14">Cast & Crew</PartTitle>
+                            <ul>
+                                <li v-for="(item,index) in dataStore.castShowNumber"
+                                    :key="index"    
+                                    class="mt-6 transition-all">
+                                    <CastItem :personalInfo="item" :i="index"></CastItem>
+                                </li>
+                            </ul>
+                            <ShowMoreBtn class="py-10"></ShowMoreBtn>
+                        </nav>
                     </div>       
                 </div>
             </div>
@@ -80,7 +82,7 @@
         <section class="similar-movies-offer">
             <div class="container mt-12 mb-6">
                 <PartTitle>More like this</PartTitle>
-                favorite List: {{ dataStore.favoriteList }}
+                <!-- favorite List: {{ dataStore.favoriteList }} -->
             </div>
             <!-- <ul  class="list flex flex-nowrap shrink-0 basis-auto">
                 <li v-for="(item,index) in 10"  
@@ -89,25 +91,27 @@
                     <SimilarMovie :similarMovieData="item" :i="index"></SimilarMovie>
                 </li> 
             </ul> -->
-            <Carousel  :items-to-show="6" :wrap-around="true">
-                <Slide  v-for="slide in 10" :key="slide">
-                    <div class="carousel__item flex-wrap grow-0 shrink-0">
-                        <MoreLikeThisItem :slideNum="slide"></MoreLikeThisItem>  
-                    </div>
-                </Slide>
-                <template #addons>
-                <Navigation />
-                </template>
-            </Carousel>
+            <nav>
+                <Carousel  :items-to-show="6" :wrap-around="true">
+                    <Slide  v-for="slide in 10" :key="slide">
+                        <div class="carousel__item flex-wrap grow-0 shrink-0">
+                            <MoreLikeThisItem :slideNum="slide"></MoreLikeThisItem>  
+                        </div>
+                    </Slide>
+                    <template #addons>
+                    <Navigation />
+                    </template>
+                </Carousel>
+            </nav>
         </section>
         <section class="FAQs">
             <div class="container">
                 <PartTitle class="mt-16 mb-6">FAQs</PartTitle>
-                <ul class="mb-10" v-if="dataStore.movieQuestion.length">
-                    <li v-for="(item,index) in 15" 
+                <ul class="mb-10">
+                    <li v-for="(item,index) in 15"
                                 :key="index" 
                                 class="py-1.5">
-                        <QuestionBox :questionData="item" :i="index"></QuestionBox>
+                        <QuestionBox :questionData="item" :i="index" v-if="dataStore.movieQuestion[index]"></QuestionBox>
                     </li>
                 </ul>
             </div>
@@ -195,6 +199,23 @@
     }
 </script>
 <style>
+    .details-table .information-table:last-child{
+        @apply border-b-0;
+    }
+    .gallery-item{
+        @apply flex-grow-0 flex-shrink-0 basis-auto w-3/6 lg:w-1/5;
+    }
+    .list{
+        overflow-x: auto;
+    }
+    .list::-webkit-scrollbar{
+        @apply w-3 h-4 rounded-xl bg-transparent;
+    }
+    .list::-webkit-scrollbar-thumb{
+        @apply rounded-xl border-4 border-solid border-transparent bg-clip-content;
+        background-color: rgba(238, 235, 221, 0.1);
+    }
+    
     .carousel__item {
         height: 100%;
         width: 100%;
@@ -242,24 +263,10 @@
     .list-items:last-child::after {
         display: none;
     }
-    .details-table .information-table:last-child{
-        @apply border-b-0;
-    }
-    .gallery-item{
-        @apply flex-grow-0 flex-shrink-0 basis-auto w-3/6 lg:w-1/5;
-    }
-    .list{
-        overflow-x: auto;
-    }
-    .list::-webkit-scrollbar{
-        @apply w-3 h-4 rounded-xl bg-transparent;
-    }
-    .list::-webkit-scrollbar-thumb{
-        @apply rounded-xl border-4 border-solid border-transparent bg-clip-content;
-        background-color: rgba(238, 235, 221, 0.1);
-    }
+    
     @media (min-width: 992px) {
-        .carousel__slide {  
+        .carousel__slide {
+            padding: 10px;
             min-width: 320px;
         }
     }

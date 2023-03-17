@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 export const useMovieData = defineStore('data', {
     state : () => {
       return{
+        offerList: [],
         isInArrayResult: '',
         relatedIndex: '',
         graphRate: '',
@@ -50,8 +51,41 @@ export const useMovieData = defineStore('data', {
           this.favoriteList.splice(this.relatedIndex,1)
         }   
       },
+      dataReset(){
+        this.graphRate = '';
+        this.searchInput = '';
+        this.bgImage  = '';
+        this.posterImage = '';
+        this.movieId  = '';
+        this.movieTitle = '';
+        this.movieDesc = '';
+        this.directors = '';
+        this.year = '';
+        this.genres = '';
+        this.imDbRating = '';
+        this.imDbRatingVotes = '';
+        this.contentRating = '';
+        this.countries = '';
+        this.awards = '';
+        this.actorList = [];
+        this.plot = '';
+        this.writers = '';
+        this.timeInfo =[];
+        this.tableInfo = [];
+        this.actorsName =[];
+        this.actorsRole =[];
+        this.actorsImages =[];
+        this.movieImages =[];
+        this.similarImage = [];
+        this.similarTitle = [];
+        this.similarRating = [];
+        this.movieQuestion = [];
+        this.movieAnswere = [];
+        this.movieThrailer = '';
+      },
       fetchInput(movieName){
-        fetch('https://imdb-api.com/en/API/SearchAll/k_ygw2uk2v/' + movieName)
+        this.dataReset();
+        fetch('https://imdb-api.com/en/API/SearchAll/k_hx4oobgs/' + movieName)
               .then( response => response.text())
               .then( res => JSON.parse(res))
               .then( res => {
@@ -65,7 +99,7 @@ export const useMovieData = defineStore('data', {
                 console.log('error', error)
               });
               setTimeout(() => {
-                  fetch('https://imdb-api.com/en/API/Title/k_ygw2uk2v/' + this.movieId)
+                  fetch('https://imdb-api.com/en/API/Title/k_hx4oobgs/' + this.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
@@ -109,7 +143,7 @@ export const useMovieData = defineStore('data', {
                   .catch(error => {
                       console.log('error', error)
                   });
-                  fetch('https://imdb-api.com/API/Posters/k_ygw2uk2v/' + this.movieId)
+                  fetch('https://imdb-api.com/API/Posters/k_hx4oobgs/' + this.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
@@ -118,7 +152,7 @@ export const useMovieData = defineStore('data', {
                         .catch(error => {
                           console.log('error', error)
                   });
-                  fetch('https://imdb-api.com/API/Images/k_ygw2uk2v/'+ this.movieId+'/Full')
+                  fetch('https://imdb-api.com/API/Images/k_hx4oobgs/'+ this.movieId+'/Full')
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
@@ -126,7 +160,7 @@ export const useMovieData = defineStore('data', {
                             this.movieImages.push(res.items[i].image)
                           }
                   });
-                  fetch('https://imdb-api.com/en/API/FAQ/k_ygw2uk2v/'+ this.movieId)
+                  fetch('https://imdb-api.com/en/API/FAQ/k_hx4oobgs/'+ this.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
@@ -135,14 +169,14 @@ export const useMovieData = defineStore('data', {
                             this.movieAnswere.push(res.items[i].answer)
                           }
                   })
-                  fetch('https://imdb-api.com/API/Trailer/k_ygw2uk2v/'+ this.movieId)
+                  fetch('https://imdb-api.com/API/Trailer/k_hx4oobgs/'+ this.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
                             this.movieThrailer = res.link 
                   })
               }, "7000");
-        // axios.get('https://imdb-api.com/en/API/Search/k_ygw2uk2v/inception 2010')
+        // axios.get('https://imdb-api.com/en/API/Search/k_hx4oobgs/inception 2010')
         //     .then(res => {
         //       console.log(res)
         //     })

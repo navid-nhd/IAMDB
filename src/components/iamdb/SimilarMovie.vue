@@ -4,7 +4,7 @@
             <img class="similar-img" :src="dataStore.similarImage[i]" :alt="dataStore.similarTitle[i]">
         </div>
         <div class="similar-movie-description">
-            <div class="sm-name">{{dataStore.similarTitle[i]}}</div>
+                <div class="sm-name">{{dataStore.similarTitle[i]}}</div>
             <div class="sm-status flex  gap-2 items-center">
                 <div class="sm-favorite">
                     <svg v-if="similarMovieData.favorite" @click="addToFavs()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" :class="`bi ${favClass}`" viewBox="0 0 16 16">
@@ -15,7 +15,7 @@
                     </svg>
                 </div>
                 <div class="sm-star">
-                    <img class="star-icon" src="src/assets/images/StarIcon.png" alt="add to favorite">
+                    <img class="star-icon" src="@/assets/images/StarIcon.png" alt="add to favorite">
                 </div>
                 <div class="sm-rating">
                     {{dataStore.similarRating[i]}}
@@ -70,6 +70,7 @@ import { useMovieData } from '@/stores/counter';
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        
         /* position: relative */
     }
     .sm-name,.sm-rating{
