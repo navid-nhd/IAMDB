@@ -52,6 +52,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-3">
+                        <!------------ Cast and Crew part ------------>
                         <nav>
                             <PartTitle class="mt-14">Cast & Crew</PartTitle>
                             <ul>
@@ -119,6 +120,7 @@
     </main>
 </template>
 <script >
+
     import 'vue3-carousel/dist/carousel.css'
     import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
@@ -199,6 +201,31 @@
     }
 </script>
 <style>
+    @import '@/assets/css/font.css';  
+    @import '@/assets/css/bootstrap-grid.css';
+
+    
+    /* -----  infinit image gallery setup ----- */
+    .carousel__item {
+        @apply flex justify-center items-center h-full w-full text-xl rounded-lg;
+        background-color: rgba(141, 141, 141, 0);
+    }
+
+    .carousel__slide {
+        padding: 10px;
+        min-width: 270px;
+    }
+
+    .carousel__prev,
+    .carousel__next {
+        @apply text-white rounded box-content border-white border-solid;
+        border-width: 3px;
+        border-radius: 50%;
+    }
+    
+    
+/* -----   image gallery which is not infinit----- */
+
     .details-table .information-table:last-child{
         @apply border-b-0;
     }
@@ -215,53 +242,21 @@
         @apply rounded-xl border-4 border-solid border-transparent bg-clip-content;
         background-color: rgba(238, 235, 221, 0.1);
     }
-    
-    .carousel__item {
-        height: 100%;
-        width: 100%;
-        background-color: rgba(141, 141, 141, 0);
-        color: var(--vc-clr-white);
-        font-size: 20px;
-        border-radius: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .carousel__slide {
-        padding: 10px;
-        min-width: 270px;
-    }
-
-    .carousel__prev,
-    .carousel__next {
-        color: white;
-        box-sizing: content-box;
-        border: 3px solid white;
-        border-radius: 50%;
-    }
-    
-    
-
-    @import '@/assets/css/font.css';  
-    @import '@/assets/css/bootstrap-grid.css';
-    
     /* -----Movie Info----- */
     .movie-info-holder{
-        margin-top: -40vh;
         @apply relative z-50;
+        margin-top: -40vh;
     }
     /* -----Bullets in time list----- */
     .list-items::after {
+        @apply bg-white ml-3;
         content: "";
         width: 6px;
         height: 6px;
-        background-color: white;
-        margin-left: 12px;
         border-radius: 50%;
     }
     .list-items:last-child::after {
-        display: none;
+        @apply hidden;
     }
     
     @media (min-width: 992px) {

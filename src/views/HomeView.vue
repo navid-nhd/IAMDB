@@ -7,7 +7,8 @@
             <div class="input-holder pt-32 lg:pt-36 xl:pt-48 2xl:pt-80">
               <div class=" flex flex-wrap lg:flex-nowrap  items-center">
                   <div class="input flex-shrink-0 flex-grow-0 basis-auto w-full lg:w-4/5  lg:pr-3 relative" >
-                    <nav :class="`recommended absolute ${isVisible} `">
+                    <!-----------------  OFFER LIST PART ----------------------->
+                    <nav :class="`recommended ${isVisible} `">
                       <ul class="offer-list">
                           <li v-for="(item,index) in dataStore.offerList" @click="dataStore.fetchInput(dataStore.offerList[index].title)">
                             <router-link :to="`/result/${dataStore.offerList[index].title}`" >
@@ -16,9 +17,11 @@
                           </li>
                       </ul>
                     </nav>
+                    <!-----------------  INPUT SECTION ----------------------->
                     <input class="small" type="text" placeholder="Type the name of your favorite movie ..." v-model="input" @keyup="showRec(this.input)">
                     <input class="large" type="text" placeholder="Your favorite movie ..." v-model="input" @keyup="showRec(this.input)">
                   </div>
+                   <!-----------------  SEARCH BUTTON ----------------------->
                   <div class="search-btn flex-shrink-0 flex-grow-0 basis-auto w-full lg:w-1/5">
                       <router-link :to="`/result/${this.input}`" >
                         <button  class="text" @click="dataStore.fetchInput(this.input)">
@@ -32,7 +35,7 @@
               </div>
             </div>
           </form>
-            <div @click="testfetch()">fetch</div>
+            <!-- <div @click="testfetch()">fetch</div> -->
       </div>
     </div>
   </main>
@@ -58,7 +61,7 @@ export default{
         input: '',
         movieId: '',
         movieLink: '',
-        isVisible: 'visible',
+        isVisible: 'hidden',
       }
     },
     methods: {
@@ -68,7 +71,7 @@ export default{
       },
       showRec(movieName){
         this.dataStore.offerList = []
-        fetch('https://imdb-api.com/en/API/SearchMovie/k_hx4oobgs/' + movieName)
+        fetch('https://imdb-api.com/en/API/SearchMovie/k_72zng87l/' + movieName)
         .then( response => response.text())
         .then( res => JSON.parse(res))
         .then( res => {
@@ -80,7 +83,7 @@ export default{
               })  
       },
       testfetch() {
-        fetch('https://imdb-api.com/en/API/SearchAll/k_hx4oobgs/tt0110413')
+        fetch('https://imdb-api.com/en/API/SearchAll/k_72zng87l/tt0110413')
               .then( response => response.text())
               .then( res => JSON.parse(res))
               .then( res => {
@@ -98,15 +101,8 @@ export default{
     @import '@/assets/css/font.css';  
     @import '@/assets/css/bootstrap-grid.css';
 .recommended{
-  bottom: 65px;
-  left: 20px;
+  @apply absolute bottom-16 left-5 w-11/12 rounded-t-xl overflow-y-hidden overflow-y-scroll max-h-[430px];
   background-color: rgb(161, 161, 161);
-  color: black;
-  width: 90%;
-  max-height: 400px;
-  border-radius: 10px;
-  overflow-x: hidden;
-  overflow-y: scroll;
 }
 .recommended::-webkit-scrollbar{
     @apply w-5 h-5 rounded-xl bg-transparent;
@@ -117,18 +113,12 @@ export default{
 }
 
 .main {
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-    position: relative;
+  @apply relative overflow-x-hidden w-screen h-screen;
 }
 .wrapper{
-  width: 100vw;
-  height: 100%;
+  @apply w-screen h-full bg-no-repeat bg-contain;
   background-image: url('@/assets/images/HomepageImage-2.png');
-  background-repeat: no-repeat;
   background-position: 0 -20px;
-  background-size: contain;
 }
 .content-holder{
   @apply flex justify-center flex-wrap;
@@ -173,10 +163,9 @@ input.small {
 }  
 @media (min-width: 992px) {
   .wrapper{
-    width: 100%;
+    @apply w-full bg-cover;
     background-image: url('@/assets/images/HomepageImage-1.png');
     background-position: 0 -30px;
-    background-size: cover;
   }
   .content-holder{
     @apply justify-end;

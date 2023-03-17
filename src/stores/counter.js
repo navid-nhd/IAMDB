@@ -85,7 +85,7 @@ export const useMovieData = defineStore('data', {
       },
       fetchInput(movieName){
         this.dataReset();
-        fetch('https://imdb-api.com/en/API/SearchAll/k_hx4oobgs/' + movieName)
+        fetch('https://imdb-api.com/en/API/SearchAll/k_72zng87l/' + movieName)
               .then( response => response.text())
               .then( res => JSON.parse(res))
               .then( res => {
@@ -99,7 +99,7 @@ export const useMovieData = defineStore('data', {
                 console.log('error', error)
               });
               setTimeout(() => {
-                  fetch('https://imdb-api.com/en/API/Title/k_hx4oobgs/' + this.movieId)
+                  fetch('https://imdb-api.com/en/API/Title/k_72zng87l/' + this.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
@@ -116,7 +116,7 @@ export const useMovieData = defineStore('data', {
 
                           this.graphRate = (res.imDbRating*36) + 'deg'
 
-                          this.imDbRatingVotes = res.imDbRatingVotes
+                          this.imDbRatingVotes = res.imDbRatingVotes.toLocaleString()
                           this.contentRating = res.contentRating
                           this.countries = res.countries
                           this.awards = res.awards
@@ -143,7 +143,7 @@ export const useMovieData = defineStore('data', {
                   .catch(error => {
                       console.log('error', error)
                   });
-                  fetch('https://imdb-api.com/API/Posters/k_hx4oobgs/' + this.movieId)
+                  fetch('https://imdb-api.com/API/Posters/k_72zng87l/' + this.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
@@ -152,7 +152,7 @@ export const useMovieData = defineStore('data', {
                         .catch(error => {
                           console.log('error', error)
                   });
-                  fetch('https://imdb-api.com/API/Images/k_hx4oobgs/'+ this.movieId+'/Full')
+                  fetch('https://imdb-api.com/API/Images/k_72zng87l/'+ this.movieId+'/Full')
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
@@ -160,7 +160,7 @@ export const useMovieData = defineStore('data', {
                             this.movieImages.push(res.items[i].image)
                           }
                   });
-                  fetch('https://imdb-api.com/en/API/FAQ/k_hx4oobgs/'+ this.movieId)
+                  fetch('https://imdb-api.com/en/API/FAQ/k_72zng87l/'+ this.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
@@ -169,14 +169,14 @@ export const useMovieData = defineStore('data', {
                             this.movieAnswere.push(res.items[i].answer)
                           }
                   })
-                  fetch('https://imdb-api.com/API/Trailer/k_hx4oobgs/'+ this.movieId)
+                  fetch('https://imdb-api.com/API/Trailer/k_72zng87l/'+ this.movieId)
                         .then( response => response.text())
                         .then( res => JSON.parse(res))
                         .then( res => {
                             this.movieThrailer = res.link 
                   })
               }, "7000");
-        // axios.get('https://imdb-api.com/en/API/Search/k_hx4oobgs/inception 2010')
+        // axios.get('https://imdb-api.com/en/API/Search/k_72zng87l/inception 2010')
         //     .then(res => {
         //       console.log(res)
         //     })

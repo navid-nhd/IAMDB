@@ -27,15 +27,8 @@ import { useMovieData } from '@/stores/counter.js';
 </script>
 <style scoped>
 .offer-item{
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  gap: 20px;
-  margin: 5px;
-  padding: 5px;
+    @apply flex justify-start items-center gap-5 m-1 p-1 text-slate-200 rounded-md;
   background-color: rgba(27, 23, 23, 0.7);
-  color: white;
-  border-radius: 5px;
   box-shadow: -6px -6px 52px -7px rgba(0,0,0,0.91);
 }
 .offer-item:hover{
@@ -43,21 +36,21 @@ import { useMovieData } from '@/stores/counter.js';
   cursor: pointer;
 }
 .offer-image{
+    @apply rounded-md;
   background-color: rgb(51, 51, 51);
-  border-radius: 5px;
-
 }
 .offer-image img{
-  width: 60px;
-  height: 80px;
-  border-radius: 5px;
+    @apply w-14 h-16 rounded-md;
 }
 .offer-text{
-  font-size: 18px;
+    @apply text-lg;
 }
 @media (min-width: 992px) {
 .offer-text{
-  font-size: 22px;
+    @apply text-xl;
 }  
+.offer-image img{
+    @apply w-16 h-20 rounded-md;
+}
 }
 </style>
