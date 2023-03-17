@@ -4,7 +4,7 @@
       <div class="container">
           <SiteName ></SiteName>
           <form>
-            <div class="input-holder pt-32 lg:pt-36 xl:pt-48 2xl:pt-80">
+            <div class="input-holder pt-48 lg:pt-36 xl:pt-48">
               <div class=" flex flex-wrap lg:flex-nowrap  items-center">
                   <div class="input flex-shrink-0 flex-grow-0 basis-auto w-full lg:w-4/5  lg:pr-3 relative" >
                     <!-----------------  OFFER LIST PART ----------------------->
@@ -81,7 +81,7 @@ export default{
       },
       showRec(movieName){
         this.dataStore.offerList = []
-        fetch('https://imdb-api.com/en/API/SearchMovie/k_73l2tbte/' + movieName)
+        fetch('https://imdb-api.com/en/API/SearchMovie/k_ygw2uk2v/' + movieName)
         .then( response => response.text())
         .then( res => JSON.parse(res))
         .then( res => {
@@ -93,7 +93,7 @@ export default{
               })  
       },
       testfetch() {
-        fetch('https://imdb-api.com/en/API/SearchAll/k_73l2tbte/tt0110413')
+        fetch('https://imdb-api.com/en/API/SearchAll/k_ygw2uk2v/tt0110413')
               .then( response => response.text())
               .then( res => JSON.parse(res))
               .then( res => {
