@@ -2,22 +2,18 @@
     <main class="error-msg">
         <div class="num">404</div>
         <div class="txt">Movie not found</div>
-        <div class="num" @click="num()">req</div>
+
     </main>
 </template>
 <script>
 export default{
     data(){
         return{
-           number: '123456789',
-           numArray : [],
+
         }
     },
     methods: {
-        num(){
-            this.numArray = this.number.toString().split('')
-            console.log(this.numArray.reverse() )
-        }
+
     }
 }   
 </script>
@@ -32,9 +28,7 @@ export default{
     .txt{
         @apply text-4xl font-bold text-red-600;
     }
-    .num{
-        cursor: pointer;
-    }
+
     @media (min-width: 992px) {
         .num{
             @apply text-9xl;
