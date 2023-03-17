@@ -75,7 +75,7 @@
                     <li v-for="(item,index) in 10" 
                                 :key="index" 
                                 class="gallery-item">
-                        <MovieImageGallery :photoData="item" :i="index"></MovieImageGallery>                       
+                        <MovieImageGallery :photoData="item" :index="index"></MovieImageGallery>                       
                     </li>
                 </ul>
             </div>

@@ -10,7 +10,9 @@
                     <!-----------------  OFFER LIST PART ----------------------->
                     <nav :class="`recommended ${isVisible} `">
                       <ul class="offer-list">
-                          <li v-for="(item,index) in dataStore.offerList" @click="dataStore.fetchInput(dataStore.offerList[index].title)">
+                          <li v-for="(item,index) in dataStore.offerList" 
+                              :key="index" 
+                              @click="dataStore.fetchInput(dataStore.offerList[index].title)">
                             <router-link :to="`/result/${dataStore.offerList[index].title}`" >
                               <OfferItem :index="index"></OfferItem>
                             </router-link>
@@ -18,8 +20,16 @@
                       </ul>
                     </nav>
                     <!-----------------  INPUT SECTION ----------------------->
-                    <input class="small" type="text" placeholder="Type the name of your favorite movie ..." v-model="input" @keyup="showRec(this.input)">
-                    <input class="large" type="text" placeholder="Your favorite movie ..." v-model="input" @keyup="showRec(this.input)">
+                    <input class="small" 
+                            type="text" 
+                            placeholder="Type the name of your favorite movie ..." 
+                            v-model="input" 
+                            @keyup="showRec(this.input)">
+                    <input class="large" 
+                            type="text" 
+                            placeholder="Your favorite movie ..." 
+                            v-model="input" 
+                            @keyup="showRec(this.input)">
                   </div>
                    <!-----------------  SEARCH BUTTON ----------------------->
                   <div class="search-btn flex-shrink-0 flex-grow-0 basis-auto w-full lg:w-1/5">
@@ -71,7 +81,7 @@ export default{
       },
       showRec(movieName){
         this.dataStore.offerList = []
-        fetch('https://imdb-api.com/en/API/SearchMovie/k_72zng87l/' + movieName)
+        fetch('https://imdb-api.com/en/API/SearchMovie/k_73l2tbte/' + movieName)
         .then( response => response.text())
         .then( res => JSON.parse(res))
         .then( res => {
@@ -83,7 +93,7 @@ export default{
               })  
       },
       testfetch() {
-        fetch('https://imdb-api.com/en/API/SearchAll/k_72zng87l/tt0110413')
+        fetch('https://imdb-api.com/en/API/SearchAll/k_73l2tbte/tt0110413')
               .then( response => response.text())
               .then( res => JSON.parse(res))
               .then( res => {
