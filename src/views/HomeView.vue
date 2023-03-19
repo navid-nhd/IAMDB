@@ -81,16 +81,18 @@ export default{
       },
       showRec(movieName){
         this.dataStore.offerList = []
-        fetch('https://imdb-api.com/en/API/SearchMovie/k_ygw2uk2v/' + movieName)
-        .then( response => response.text())
-        .then( res => JSON.parse(res))
-        .then( res => {
-          console.log(res.results.length)
-                this.isVisible = this.input ? 'visible' : 'hidden';
-                for(let i=0;i<=10;i++){
-                  this.dataStore.offerList.push(res.results[i])
-                }
-              })  
+        setTimeout(() => {
+          fetch('https://imdb-api.com/en/API/SearchMovie/k_ygw2uk2v/' + movieName)
+          .then( response => response.text())
+          .then( res => JSON.parse(res))
+          .then( res => {
+            console.log(res.results.length)
+                  this.isVisible = this.input ? 'visible' : 'hidden';
+                  for(let i=0;i<=10;i++){
+                    this.dataStore.offerList.push(res.results[i])
+                  }
+                })  
+        }, 1000);
       },
       testfetch() {
         fetch('https://imdb-api.com/en/API/SearchAll/k_ygw2uk2v/tt0110413')
@@ -201,6 +203,11 @@ input.small {
     width: 90%;
     background-position: -50px -90px;
   }
+  .input-holder{
+    padding-top: 130px;
+  }
+}  
+@media (min-width: 1600px) {
   .input-holder{
     padding-top: 180px;
   }

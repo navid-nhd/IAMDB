@@ -43,7 +43,7 @@ export const useMovieData = defineStore('data', {
     actions : {
       addOrRemoveFavList(id){
         this.isInArrayResult = this.favoriteList.some( item => item === id)
-        console.log(this.isInArrayResult)
+        // console.log(this.isInArrayResult)
         if(!this.isInArrayResult){
           this.favoriteList.push(id)
         }else{
