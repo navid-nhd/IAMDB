@@ -85,6 +85,7 @@ export const useMovieData = defineStore('data', {
       },
       fetchInput(movieName){
         this.dataReset();
+        document.title = movieName;
         fetch('https://imdb-api.com/en/API/SearchAll/k_ygw2uk2v/' + movieName)
               .then( response => response.text())
               .then( res => JSON.parse(res))
